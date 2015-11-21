@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/11 | Hexo</title>
+  <title>GDAL read Envi data | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2015/11/index.html">
+  <meta name="description" content="123456789import osgeo.gdal as gdaldriver = gdal.GetDriverByName(&apos;ENVI&apos;)driver.Register()file = &quot;D:\Data\Neural Network\L5subset-test\l5subset.dat&quot;raster = gdal.Open(file,gdal.GA_ReadOnly)raster_array">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GDAL read Envi data">
+<meta property="og:url" content="http://yoursite.com/2015/03/27/GDAL read Envi data/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="123456789import osgeo.gdal as gdaldriver = gdal.GetDriverByName(&apos;ENVI&apos;)driver.Register()file = &quot;D:\Data\Neural Network\L5subset-test\l5subset.dat&quot;raster = gdal.Open(file,gdal.GA_ReadOnly)raster_array">
+<meta property="og:updated_time" content="2015-03-28T14:15:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="GDAL read Envi data">
+<meta name="twitter:description" content="123456789import osgeo.gdal as gdaldriver = gdal.GetDriverByName(&apos;ENVI&apos;)driver.Register()file = &quot;D:\Data\Neural Network\L5subset-test\l5subset.dat&quot;raster = gdal.Open(file,gdal.GA_ReadOnly)raster_array">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -190,49 +191,115 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-GDAL read Envi data" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/11/21/hello-world/" class="archive-article-date">
-  	<time datetime="2015-11-21T16:10:47.516Z" itemprop="datePublished">Nov 21</time>
+    <div class="article-meta">
+      <a href="/2015/03/27/GDAL read Envi data/" class="article-date">
+  	<time datetime="2015-03-27T21:30:16.000Z" itemprop="datePublished">2015-03-27</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/11/21/hello-world/">Hello World</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      GDAL read Envi data
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Envi/">Envi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GDAL/">GDAL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+	</div>
 
-        </div>
+        
+
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import osgeo<span class="class">.gdal</span> as gdal</span><br><span class="line"></span><br><span class="line">driver = gdal.<span class="function"><span class="title">GetDriverByName</span><span class="params">(<span class="string">'ENVI'</span>)</span></span></span><br><span class="line">driver.<span class="function"><span class="title">Register</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">file = <span class="string">"D:\Data\Neural Network\L5subset-test\l5subset.dat"</span></span><br><span class="line">raster = gdal.<span class="function"><span class="title">Open</span><span class="params">(file,gdal.GA_ReadOnly)</span></span></span><br><span class="line">raster_array = raster.<span class="function"><span class="title">ReadAsArray</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">imshow</span><span class="params">(raster_array[<span class="number">6</span>])</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入实除法模块后的结果为浮点数</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ndvi=<span class="list">(<span class="keyword">raster_array</span>[<span class="number">4</span>]-raster_array[<span class="number">3</span>])</span>/<span class="list">(<span class="keyword">raster_array</span>[<span class="number">4</span>]+raster_array[<span class="number">3</span>])</span></span><br><span class="line">imshow<span class="list">(<span class="keyword">ndvi</span>)</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/31/Hyperspectral data mosaic using GDAL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hyperspectral data mosaic using GDAL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/27/hyperspectral data science/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hyperspectral Data Science</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="GDAL read Envi data" data-title="GDAL read Envi data" data-url="http://yoursite.com/2015/03/27/GDAL read Envi data/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -258,8 +325,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

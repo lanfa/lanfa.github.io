@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/ArcGIS/" style="font-size: 10px;">ArcGIS</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Clip/" style="font-size: 10px;">Clip</a> <a href="/tags/Data-Science/" style="font-size: 10px;">Data Science</a> <a href="/tags/Envi/" style="font-size: 12.5px;">Envi</a> <a href="/tags/GDAL/" style="font-size: 15px;">GDAL</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/HDF/" style="font-size: 10px;">HDF</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hyperspectral/" style="font-size: 10px;">Hyperspectral</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Modis/" style="font-size: 10px;">Modis</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/SPy/" style="font-size: 10px;">SPy</a> <a href="/tags/kmeans/" style="font-size: 10px;">kmeans</a> <a href="/tags/mosaic/" style="font-size: 10px;">mosaic</a> <a href="/tags/raster/" style="font-size: 10px;">raster</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
 					</div>
 				</section>
 				
@@ -251,6 +251,548 @@
 
 
   
+    <article id="post-pandas按照时间戳提取excel数据" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/29/pandas按照时间戳提取excel数据/" class="article-date">
+  	<time datetime="2015-09-29T13:41:03.775Z" itemprop="datePublished">2015-09-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>pandas按照时间戳提取多个文件夹指定excel文件数据</p>
+<p>‘’’<br>import os<br>import pandas as pd</p>
+<p>path = “F:/b7beb8bf-58d9-4e58-a945-7b6e1dc7705f/2012”<br>subfolders = os.listdir(path)</p>
+<h1 id="初始化一个pandas-core-frame-DataFrame类型的变量，存放提取结果">初始化一个pandas.core.frame.DataFrame类型的变量，存放提取结果</h1><p>dt_Total = pd.DataFrame() </p>
+<h1 id="遍历子文件夹">遍历子文件夹</h1><p>for folder in subfolders:<br>    files = os.listdir(path+”/“+folder)</p>
+<pre><code><span class="preprocessor"># 遍历子文件夹内的文件，并提取出文件名含有“20120629”的excel文件名，可能有0个或1个</span>
+excel = [x <span class="keyword">for</span> x <span class="keyword">in</span> files <span class="keyword">if</span> <span class="string">"20120629"</span> <span class="keyword">in</span> x]
+<span class="keyword">if</span> excel.__len__()&gt;<span class="number">0</span>:
+    dt=pd.read_csv(path+<span class="string">"/"</span>+folder+<span class="string">"/"</span>+excel[<span class="number">0</span>])
+    <span class="preprocessor">#----------------------------------尝试无果----------------------------------------------</span>
+    <span class="preprocessor">#dt_Total = dt_Total.append(dt[510:511])</span>
+    <span class="preprocessor">#dt_Total = dt_Total.append(dt.loc[dt[<span class="string">'Time'</span>]==<span class="string">'2012-06-29 11:40:10'</span>])</span>
+    <span class="preprocessor">#dt_Total = dt_Total.append(df.loc[<span class="string">'2012-06-29 08:40:50'</span>:<span class="string">'2012-06-29 08:41:50'</span>])</span>
+    <span class="preprocessor">#-----------------------------------------------------------------------------------------</span>
+    <span class="preprocessor"># </span>
+    <span class="preprocessor"># 根据excel第一列的时间来提取指定时间段的行数据，以提取12：40的数据为例</span>
+    <span class="preprocessor"># 参考 http://pandas.pydata.org/pandas-docs/stable/timeseries.html</span>
+    <span class="preprocessor"># 注意多个条件时，不是&amp;， 而是np.logical_and(index.hour==12,index.minute==40)</span>
+    <span class="preprocessor">#</span>
+    <span class="preprocessor">#-----------------------------------------------------------------------------------------</span>
+    dtTime = pd.Series(dt.Time)
+    index = pd.DatetimeIndex(dtTime)
+    dt_Total = dt_Total.append(dt[np.logical_and(index.hour==<span class="number">12</span>,index.minute==<span class="number">40</span>)])
+</code></pre><p>‘’’</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Clipping a raster with a polygon in ArcGIS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/05/Clipping a raster with a polygon in ArcGIS/" class="article-date">
+  	<time datetime="2015-04-05T10:30:16.000Z" itemprop="datePublished">2015-04-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/05/Clipping a raster with a polygon in ArcGIS/">Clipping a raster with a polygon in ArcGIS</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>In ArcGIS Toolbox</p>
+</blockquote>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Data</span> Management Tools <span class="subst">-&gt; </span>Raster <span class="subst">-&gt; </span>Raster Processing <span class="subst">-&gt; </span>Clip</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://lanfa-github.qiniudn.com/4clipraster.gif" alt=""><br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Clip/">Clip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raster/">raster</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/04/05/Clipping a raster with a polygon in ArcGIS/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Hyperspectral data mosaic using GDAL" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/31/Hyperspectral data mosaic using GDAL/" class="article-date">
+  	<time datetime="2015-03-31T10:30:16.000Z" itemprop="datePublished">2015-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/31/Hyperspectral data mosaic using GDAL/">Hyperspectral data mosaic using GDAL</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="#Problem_using_ENVI">#Problem using ENVI</h2><h2 id="The_Seamless_Mosaic_tool_is_limited_to_10_bands-_If_you_are_using_hyperspectral_imagery,_you_should_create_a_spectral_subset_of_no_more_than_10_bands_before_using_the_Seamless_Mosaic_tool-"><a href="http://www.exelisvis.com/docs/MosaicSeamless.html" target="_blank" rel="external">The Seamless Mosaic tool is limited to 10 bands. If you are using hyperspectral imagery, you should create a spectral subset of no more than 10 bands before using the Seamless Mosaic tool.</a></h2><p>#Solved using GDAL<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% <span class="keyword">run</span> <span class="keyword">E</span>:\OneDrive\GitHub\python\gdal_merge.py -<span class="keyword">n</span> 0 -o <span class="string">"D:\salar_subset\hypspex_merge_2.dat"</span> <span class="string">"D:\salar_subset\hypspex_10_2.dat"</span> <span class="string">"D:\salar_subset\hypspex_11.dat"</span></span><br></pre></td></tr></table></figure></p>
+<p>More information about <a href="http://www.gdal.org/gdal_merge.html" target="_blank" rel="external">gdal_merge.py</a></p>
+<hr>
+<p>#Prepared data</p>
+<p><img src="http://lanfa-github.qiniudn.com/3_HyperimgL.jpg" alt="">  <img src="http://lanfa-github.qiniudn.com/3_HyperimgR.jpg" alt=""></p>
+<p>#Result<br><img src="http://lanfa-github.qiniudn.com/3_HyperimgMerge.jpg" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GDAL/">GDAL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mosaic/">mosaic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-GDAL read Envi data" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/27/GDAL read Envi data/" class="article-date">
+  	<time datetime="2015-03-27T21:30:16.000Z" itemprop="datePublished">2015-03-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/GDAL read Envi data/">GDAL read Envi data</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import osgeo<span class="class">.gdal</span> as gdal</span><br><span class="line"></span><br><span class="line">driver = gdal.<span class="function"><span class="title">GetDriverByName</span><span class="params">(<span class="string">'ENVI'</span>)</span></span></span><br><span class="line">driver.<span class="function"><span class="title">Register</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">file = <span class="string">"D:\Data\Neural Network\L5subset-test\l5subset.dat"</span></span><br><span class="line">raster = gdal.<span class="function"><span class="title">Open</span><span class="params">(file,gdal.GA_ReadOnly)</span></span></span><br><span class="line">raster_array = raster.<span class="function"><span class="title">ReadAsArray</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">imshow</span><span class="params">(raster_array[<span class="number">6</span>])</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入实除法模块后的结果为浮点数</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ndvi=<span class="list">(<span class="keyword">raster_array</span>[<span class="number">4</span>]-raster_array[<span class="number">3</span>])</span>/<span class="list">(<span class="keyword">raster_array</span>[<span class="number">4</span>]+raster_array[<span class="number">3</span>])</span></span><br><span class="line">imshow<span class="list">(<span class="keyword">ndvi</span>)</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Envi/">Envi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GDAL/">GDAL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-hyperspectral data science" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/27/hyperspectral data science/" class="article-date">
+  	<time datetime="2015-03-27T18:30:16.000Z" itemprop="datePublished">2015-03-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/hyperspectral data science/">Hyperspectral Data Science</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w" alt=""></p>
+<p>from <img src="http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hyperspectral/">Hyperspectral</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-GDAL read Modis data(HDF4)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/27/GDAL read Modis data(HDF4)/" class="article-date">
+  	<time datetime="2015-03-27T18:30:16.000Z" itemprop="datePublished">2015-03-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/GDAL read Modis data(HDF4)/">GDAL read Modis data(HDF4)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##<strong><a href="http://jgomezdans.github.io/gdal_notes/ipython.html">Reference Link</a></strong></p>
+<ul>
+<li><strong>Code</strong><figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> osgeo <span class="keyword">import</span> gdal</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gdal_dataset=gdal.<span class="function"><span class="title">Open</span><span class="params">(<span class="string">"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf"</span>)</span></span></span><br><span class="line">gdal_dataset.<span class="function"><span class="title">GetSubDatasets</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GDAL/">GDAL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDF/">HDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modis/">Modis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/03/27/GDAL read Modis data(HDF4)/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Spectral Python(SPy) with Envi data" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/27/Spectral Python(SPy) with Envi data/" class="article-date">
+  	<time datetime="2015-03-27T18:30:16.000Z" itemprop="datePublished">2015-03-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/Spectral Python(SPy) with Envi data/">Spectral Python(SPy) with Envi data</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong>Environment</strong></li>
+</ul>
+<p>Windows8.1 64Bit, Anaconda, Ipython notebook</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install spectral</span><br></pre></td></tr></table></figure>
+<p>set your matplotlib backend to either “WX” or “WXAgg”<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Envi/">Envi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SPy/">SPy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kmeans/">kmeans</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/03/27/Spectral Python(SPy) with Envi data/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-index" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/10/index/" class="article-date">
+  	<time datetime="2015-03-10T22:12:52.000Z" itemprop="datePublished">2015-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/10/index/">简历(CV)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>this is my personal cv</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/10/Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive/" class="article-date">
+  	<time datetime="2015-03-10T14:30:16.000Z" itemprop="datePublished">2015-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/10/Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive/">Setup your personal blog using Hexo, Github, Markdown and OneDrive</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong>Environment</strong></li>
+</ul>
+<p>Windows8.1 64Bit<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/03/10/Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
