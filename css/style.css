@@ -609,11 +609,11 @@ a {
 #header .header-nav .social a:last-of-type {
   margin-right: 0;
 }
-#header .header-nav .social a.weibo {
-  background: url("/img/researchgate.png") center no-repeat #22ef75;
+#header .header-nav .social a.researchgate {
+  background: url("/img/researchgate.png") center no-repeat #2cdaaa;
   border: 1px solid #aaf;
 }
-#header .header-nav .social a.weibo:hover {
+#header .header-nav .social a.researchgate:hover {
   border: 1px solid #aaf;
 }
 #header .header-nav .social a.rss {
