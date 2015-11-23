@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lanfa' Blog</title><link>/</link><description>Remote Sensing Data Science</description><atom:link href="/feeds/lanfa.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 31 Mar 2015 12:30:16 +0800</lastBuildDate><item><title>Hyperspectral data mosaic using GDAL</title><link>/2015/03/hyperspectral-data-mosaic-using-gdal/</link><description>&lt;h1&gt;Problem using ENVI&lt;/h1&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>刘兰法De博客</title><link>/</link><description>Remote Sensing Data Science</description><atom:link href="/feeds/lanfa.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 31 Mar 2015 12:30:16 +0800</lastBuildDate><item><title>Hyperspectral data mosaic using GDAL</title><link>/2015/03/hyperspectral-data-mosaic-using-gdal/</link><description>&lt;h1&gt;Problem using ENVI&lt;/h1&gt;
 &lt;hr /&gt;
 &lt;h2&gt;&lt;a href="http://www.exelisvis.com/docs/MosaicSeamless.html"&gt;The Seamless Mosaic tool is limited to 10 bands. If you are using hyperspectral imagery, you should create a spectral subset of no more than 10 bands before using the Seamless Mosaic tool.&lt;/a&gt;&lt;/h2&gt;
 &lt;h1&gt;Solved using GDAL&lt;/h1&gt;

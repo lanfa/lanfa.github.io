@@ -225,9 +225,9 @@ section.alternate.arrow-down {
 #home .image-caption h1, #home .image-caption h2 {
   font-family:'Open Sans', sans-serif;
   font-weight:800;
-  font-size:600%;
+  font-size:500%;
   line-height:95%;
-  text-transform:uppercase;
+  /*text-transform:uppercase;*/
   text-shadow:none;
   color:#fff;
   display:block;
