@@ -8,12 +8,13 @@
   <meta name="description" content="%pylab inline
 
 Populating the interactive namespace from numpy and matplotlib
+
 ##Spectral Python
+
 from spectral import *
 import spectral.io.envi as envi
 
-
-spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
+spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hyperspectral - Ipython">
 <meta property="og:url" content="http://yoursite.com/2015/11/27/Hyperspectral/index.html">
@@ -21,33 +22,35 @@ spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
 <meta property="og:description" content="%pylab inline
 
 Populating the interactive namespace from numpy and matplotlib
+
 ##Spectral Python
+
 from spectral import *
 import spectral.io.envi as envi
 
-
-spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
-<meta property="og:image" content="http://yoursite.com/./image/output_6_1.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_10_1.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_13_0.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_14_1.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_15_1.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_19_0.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_24_1.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_31_1.png">
-<meta property="og:image" content="http://yoursite.com/./image/output_38_1.png">
-<meta property="og:updated_time" content="2015-11-23T13:31:34.623Z">
+spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,">
+<meta property="og:image" content="http://yoursite.com/images/output_6_1.png">
+<meta property="og:image" content="http://yoursite.com/images/output_10_1.png">
+<meta property="og:image" content="http://yoursite.com/images/output_13_0.png">
+<meta property="og:image" content="http://yoursite.com/images/output_14_1.png">
+<meta property="og:image" content="http://yoursite.com/images/output_15_1.png">
+<meta property="og:image" content="http://yoursite.com/images/output_19_0.png">
+<meta property="og:image" content="http://yoursite.com/images/output_24_1.png">
+<meta property="og:image" content="http://yoursite.com/images/output_31_1.png">
+<meta property="og:image" content="http://yoursite.com/images/output_38_1.png">
+<meta property="og:updated_time" content="2015-11-23T13:41:49.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hyperspectral - Ipython">
 <meta name="twitter:description" content="%pylab inline
 
 Populating the interactive namespace from numpy and matplotlib
+
 ##Spectral Python
+
 from spectral import *
 import spectral.io.envi as envi
 
-
-spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
+spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,">
   
     <link rel="alternative" href="/atom.xml" title="刘兰法de博客" type="application/atom+xml">
   
@@ -265,13 +268,14 @@ spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>%pylab <span class="keyword">inline</span>
+        <pre><code>%pylab inline
 
-Populating the interactive <span class="keyword">namespace</span> <span class="keyword">from</span> numpy <span class="keyword">and</span> matplotlib
-</code></pre><p>##Spectral Python</p>
-<pre><code><span class="built_in">from</span> spectral import *
+Populating <span class="operator">the</span> interactive namespace <span class="built_in">from</span> numpy <span class="operator">and</span> matplotlib
+
+<span class="comment">##Spectral Python</span>
+
+<span class="built_in">from</span> spectral import *
 import spectral.io.envi <span class="keyword">as</span> envi
-
 
 spimg_L=envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10.hdr"</span>,<span class="string">"E:\salar_test\SWIR_10.dat"</span>).<span class="built_in">load</span>()
 spimg_L_CR=envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10_CR.hdr"</span>,<span class="string">"E:\salar_test\SWIR_10_CR.dat"</span>).<span class="built_in">load</span>()
@@ -282,24 +286,12 @@ filename = envi.<span class="built_in">open</span>(<span class="string">"E:\sala
 
 type(filename.metadata.<span class="built_in">get</span>(<span class="string">'wavelength'</span>))
 
-
-
-
-list
-
-
-
-
 <span class="comment">#imshow(spimg_L.readBands(2))</span>
 imshow(spimg_L, (<span class="number">80</span>,<span class="number">220</span>,<span class="number">48</span>))
 <span class="comment">#imshow(classes=spimg_L.readBands(1))</span>
 plt.colorbar()
-
-
-
-
-&lt;matplotlib.colorbar.Colorbar instance <span class="keyword">at</span> <span class="number">0x000000000CA8E0C8</span>&gt;
-</code></pre><p><img src="./image/output_6_1.png" alt="png"></p>
+</code></pre><p><img src="/images/output_6_1.png" alt="png"></p>
+<a id="more"></a>
 <pre><code>#<span class="function"><span class="title">view_cube</span><span class="params">(spimg_L, bands=[<span class="number">29</span>, <span class="number">19</span>, <span class="number">9</span>])</span></span>
 
 
@@ -328,7 +320,7 @@ plt.<span class="function"><span class="title">legend</span><span class="params"
 
 
 &lt;matplotlib<span class="class">.legend</span><span class="class">.Legend</span> at <span class="number">0</span>xe441940&gt;
-</code></pre><p><img src="./image/output_10_1.png" alt="png"></p>
+</code></pre><p><img src="/images/output_10_1.png" alt="png"></p>
 <pre><code>import pysptools<span class="class">.spectro</span> as spectro
 
 
@@ -336,7 +328,7 @@ plt.<span class="function"><span class="title">legend</span><span class="params"
 
 
 <span class="tag">a</span>.<span class="function"><span class="title">display</span><span class="params">(<span class="string">'test'</span>)</span></span>
-</code></pre><p><img src="./image/output_13_0.png" alt="png"></p>
+</code></pre><p><img src="/images/output_13_0.png" alt="png"></p>
 <pre><code>&lt;matplotlib.figure.Figure at <span class="number">0xea13fd0</span>&gt;
 
 
@@ -347,14 +339,9 @@ plot(spimg_L_CR[<span class="number">2</span>,<span class="number">2</span>])
 
 
 <span class="annotation">[&lt;matplotlib.lines.Line2D at 0xeaa9400&gt;]</span>
-</code></pre><p><img src="./image/output_14_1.png" alt="png"></p>
+</code></pre><p><img src="/images/output_14_1.png" alt="png"></p>
 <pre><code>plt.<span class="function"><span class="title">plot</span><span class="params">(list(wvl)</span></span>,<span class="tag">a</span><span class="class">.crs</span>,label=<span class="string">'Continuum Removed Spectrum'</span>)
-
-
-
-
-[&lt;matplotlib<span class="class">.lines</span><span class="class">.Line2D</span> at <span class="number">0</span>x1ac49cf8&gt;]
-</code></pre><p><img src="./image/output_15_1.png" alt="png"></p>
+</code></pre><p><img src="/images/output_15_1.png" alt="png"></p>
 <pre><code>fea = spectro.FeaturesConvexHullQuotient?
 
 
@@ -365,21 +352,13 @@ fea = spectro.FeaturesConvexHullQuotient(<span class="keyword">list</span>(dat),
 
 
 fea.<span class="keyword">display</span>(<span class="string">'test'</span>,feature=<span class="string">'all'</span>)
-</code></pre><p><img src="./image/output_19_0.png" alt="png"></p>
+</code></pre><p><img src="/images/output_19_0.png" alt="png"></p>
 <pre><code>&lt;matplotlib<span class="class">.figure</span><span class="class">.Figure</span> at <span class="number">0</span>x1af814e0&gt;
 </code></pre><p>##GDAL</p>
 <pre><code>import osgeo<span class="class">.gdal</span> as gdal
 
 driver = gdal.<span class="function"><span class="title">GetDriverByName</span><span class="params">(<span class="string">'ENVI'</span>)</span></span>
 driver.<span class="function"><span class="title">Register</span><span class="params">()</span></span>
-
-
-
-
-<span class="number">70</span>
-
-
-
 
 salar_L = <span class="string">"E:\salar_test\SWIR_10.dat"</span>
 raster_L = gdal.<span class="function"><span class="title">Open</span><span class="params">(salar_L,gdal.GA_ReadOnly)</span></span>
@@ -388,24 +367,14 @@ raster_array_L = raster_L.<span class="function"><span class="title">ReadAsArray
 
 <span class="function"><span class="title">imshow</span><span class="params">(raster_array_L[<span class="number">245</span>])</span></span>
 plt.<span class="function"><span class="title">colorbar</span><span class="params">()</span></span>
-
-
-
-
-&lt;matplotlib<span class="class">.colorbar</span><span class="class">.Colorbar</span> instance at <span class="number">0</span>x00000000377A4AC8&gt;
-</code></pre><p><img src="./image/output_24_1.png" alt="png"></p>
+</code></pre><p><img src="/images/output_24_1.png" alt="png"></p>
 <p>#查看可供调用的函数</p>
 <pre><code>#<span class="function"><span class="title">dir</span><span class="params">(raster_L)</span></span>
 
 
 raster_L<span class="class">.RasterCount</span>
 
-
-
-
 <span class="number">256</span>
-
-
 
 
 band1 = raster_L.<span class="function"><span class="title">GetRasterBand</span><span class="params">(<span class="number">1</span>)</span></span>
@@ -419,15 +388,10 @@ plt.<span class="function"><span class="title">colorbar</span><span class="param
 
 
 &lt;matplotlib<span class="class">.colorbar</span><span class="class">.Colorbar</span> instance at <span class="number">0</span>x0000000039A8BDC8&gt;
-</code></pre><p><img src="./image/output_31_1.png" alt="png"></p>
+</code></pre><p><img src="/images/output_31_1.png" alt="png"></p>
 <pre><code>band1.ComputeRasterMinMax()
 
-
-
-
 (<span class="number">21690.0</span>, <span class="number">47779.0</span>)
-
-
 
 
 type(band1array)
@@ -471,7 +435,7 @@ ImageView <span class="string">object:</span>
 <span class="label">    R:</span> [<span class="number">0.0</span>, <span class="number">65289.0</span>]
 <span class="label">    G:</span> [<span class="number">0.0</span>, <span class="number">65360.0</span>]
 <span class="label">    B:</span> [<span class="number">0.0</span>, <span class="number">65301.0</span>]
-</code></pre><p><img src="./image/output_38_1.png" alt="png"></p>
+</code></pre><p><img src="/images/output_38_1.png" alt="png"></p>
 <pre><code>gdaldata = <span class="string">"D:\salar_subset\hypspex_merge_2.dat"</span>
 gdalmerge = gdal.Open(gdaldata,gdal.GA_ReadOnly)
 gdalmerge_array = gdalmerge.ReadAsArray()
