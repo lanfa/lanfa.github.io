@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hyperspectral - Ipython | 刘兰法de博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="%pylab inline
+
+Populating the interactive namespace from numpy and matplotlib
+##Spectral Python
+from spectral import *
+import spectral.io.envi as envi
+
+
+spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hyperspectral - Ipython">
+<meta property="og:url" content="http://yoursite.com/2015/11/27/Hyperspectral/index.html">
+<meta property="og:site_name" content="刘兰法de博客">
+<meta property="og:description" content="%pylab inline
+
+Populating the interactive namespace from numpy and matplotlib
+##Spectral Python
+from spectral import *
+import spectral.io.envi as envi
+
+
+spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
+<meta property="og:image" content="http://yoursite.com/./image/output_6_1.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_10_1.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_13_0.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_14_1.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_15_1.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_19_0.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_24_1.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_31_1.png">
+<meta property="og:image" content="http://yoursite.com/./image/output_38_1.png">
+<meta property="og:updated_time" content="2015-11-23T13:31:34.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hyperspectral - Ipython">
+<meta name="twitter:description" content="%pylab inline
+
+Populating the interactive namespace from numpy and matplotlib
+##Spectral Python
+from spectral import *
+import spectral.io.envi as envi
+
+
+spimg_L=envi.open(&quot;E:\salar_test\SWIR_10.hdr&quot;,&quot;">
+  
+    <link rel="alternative" href="/atom.xml" title="刘兰法de博客" type="application/atom+xml">
+  
+  
+   <link href="/favicon.png" rel="icon">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">刘兰法</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">遥感数据科学</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lanfa" title="github">github</a>
+					        
+								<a class="researchGate" target="_blank" href="https://www.researchgate.net/profile/Lanfa_Liu3" title="researchGate">researchGate</a>
+					        
+								<a class="mail" target="_blank" href="/lanfa.liu@outlook.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/ArcGIS/" style="font-size: 10px;">ArcGIS</a> <a href="/tags/Clip/" style="font-size: 10px;">Clip</a> <a href="/tags/Data-Science/" style="font-size: 10px;">Data Science</a> <a href="/tags/Envi/" style="font-size: 12.5px;">Envi</a> <a href="/tags/GDAL/" style="font-size: 15px;">GDAL</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/HDF/" style="font-size: 10px;">HDF</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hyperspectral/" style="font-size: 10px;">Hyperspectral</a> <a href="/tags/Ipython/" style="font-size: 10px;">Ipython</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Modis/" style="font-size: 10px;">Modis</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/SPy/" style="font-size: 10px;">SPy</a> <a href="/tags/kmeans/" style="font-size: 10px;">kmeans</a> <a href="/tags/mosaic/" style="font-size: 10px;">mosaic</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/raster/" style="font-size: 10px;">raster</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">~~~高山仰止，景行行止。虽不能至，然心向往之~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">刘兰法</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">刘兰法</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">遥感数据科学</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lanfa" title="github">github</a>
+			        
+						<a class="researchGate" target="_blank" href="https://www.researchgate.net/profile/Lanfa_Liu3" title="researchGate">researchGate</a>
+			        
+						<a class="mail" target="_blank" href="/lanfa.liu@outlook.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Hyperspectral" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/27/Hyperspectral/" class="article-date">
+  	<time datetime="2015-11-27T18:30:16.000Z" itemprop="datePublished">2015-11-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hyperspectral - Ipython
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ipython/">Ipython</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>%pylab <span class="keyword">inline</span>
+
+Populating the interactive <span class="keyword">namespace</span> <span class="keyword">from</span> numpy <span class="keyword">and</span> matplotlib
+</code></pre><p>##Spectral Python</p>
+<pre><code><span class="built_in">from</span> spectral import *
+import spectral.io.envi <span class="keyword">as</span> envi
+
+
+spimg_L=envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10.hdr"</span>,<span class="string">"E:\salar_test\SWIR_10.dat"</span>).<span class="built_in">load</span>()
+spimg_L_CR=envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10_CR.hdr"</span>,<span class="string">"E:\salar_test\SWIR_10_CR.dat"</span>).<span class="built_in">load</span>()
+
+
+filename = envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10.hdr"</span>)
+
+
+type(filename.metadata.<span class="built_in">get</span>(<span class="string">'wavelength'</span>))
+
+
+
+
+list
+
+
+
+
+<span class="comment">#imshow(spimg_L.readBands(2))</span>
+imshow(spimg_L, (<span class="number">80</span>,<span class="number">220</span>,<span class="number">48</span>))
+<span class="comment">#imshow(classes=spimg_L.readBands(1))</span>
+plt.colorbar()
+
+
+
+
+&lt;matplotlib.colorbar.Colorbar instance <span class="keyword">at</span> <span class="number">0x000000000CA8E0C8</span>&gt;
+</code></pre><p><img src="./image/output_6_1.png" alt="png"></p>
+<pre><code>#<span class="function"><span class="title">view_cube</span><span class="params">(spimg_L, bands=[<span class="number">29</span>, <span class="number">19</span>, <span class="number">9</span>])</span></span>
+
+
+from lincr import removeContinuumInplace
+
+
+wvl = np.<span class="function"><span class="title">arange</span><span class="params">(spimg_L.nbands)</span></span>
+
+
+<span class="id">#dat</span> = dt_train_bands<span class="class">.ix</span>[<span class="number">10</span>]
+dat = np.<span class="function"><span class="title">array</span><span class="params">(spimg_L[<span class="number">2</span>,<span class="number">2</span>],dtype=float64)</span></span>
+crdat,ccdat = dat.<span class="function"><span class="title">copy</span><span class="params">()</span></span>,dat.<span class="function"><span class="title">copy</span><span class="params">()</span></span>
+<span class="function"><span class="title">removeContinuumInplace</span><span class="params">(wvl,crdat,<span class="number">0</span>,True)</span></span>
+<span class="function"><span class="title">removeContinuumInplace</span><span class="params">(wvl,ccdat,<span class="number">1</span>,True)</span></span>
+
+plt.<span class="function"><span class="title">subplot</span><span class="params">(<span class="number">211</span>)</span></span>
+plt.<span class="function"><span class="title">plot</span><span class="params">(wvl,dat,label=<span class="string">'Continuum Intact Spectrum'</span>)</span></span>
+plt.<span class="function"><span class="title">plot</span><span class="params">(wvl,ccdat,label=<span class="string">'Continuum Curve'</span>)</span></span>
+plt.<span class="function"><span class="title">legend</span><span class="params">(loc=<span class="string">'best'</span>)</span></span>
+
+plt.<span class="function"><span class="title">subplot</span><span class="params">(<span class="number">212</span>)</span></span>
+plt.<span class="function"><span class="title">plot</span><span class="params">(wvl,crdat,label=<span class="string">'Continuum Removed Spectrum'</span>)</span></span>
+plt.<span class="function"><span class="title">legend</span><span class="params">(loc=<span class="string">'best'</span>)</span></span>
+
+
+
+
+&lt;matplotlib<span class="class">.legend</span><span class="class">.Legend</span> at <span class="number">0</span>xe441940&gt;
+</code></pre><p><img src="./image/output_10_1.png" alt="png"></p>
+<pre><code>import pysptools<span class="class">.spectro</span> as spectro
+
+
+<span class="tag">a</span> = spectro.<span class="function"><span class="title">SpectrumConvexHullQuotient</span><span class="params">(list(dat)</span></span>,<span class="function"><span class="title">list</span><span class="params">(wvl)</span></span>)
+
+
+<span class="tag">a</span>.<span class="function"><span class="title">display</span><span class="params">(<span class="string">'test'</span>)</span></span>
+</code></pre><p><img src="./image/output_13_0.png" alt="png"></p>
+<pre><code>&lt;matplotlib.figure.Figure at <span class="number">0xea13fd0</span>&gt;
+
+
+
+plot(spimg_L_CR[<span class="number">2</span>,<span class="number">2</span>])
+
+
+
+
+<span class="annotation">[&lt;matplotlib.lines.Line2D at 0xeaa9400&gt;]</span>
+</code></pre><p><img src="./image/output_14_1.png" alt="png"></p>
+<pre><code>plt.<span class="function"><span class="title">plot</span><span class="params">(list(wvl)</span></span>,<span class="tag">a</span><span class="class">.crs</span>,label=<span class="string">'Continuum Removed Spectrum'</span>)
+
+
+
+
+[&lt;matplotlib<span class="class">.lines</span><span class="class">.Line2D</span> at <span class="number">0</span>x1ac49cf8&gt;]
+</code></pre><p><img src="./image/output_15_1.png" alt="png"></p>
+<pre><code>fea = spectro.FeaturesConvexHullQuotient?
+
+
+fea = spectro.FeaturesConvexHullQuotient
+
+
+fea = spectro.FeaturesConvexHullQuotient(<span class="keyword">list</span>(dat),<span class="keyword">list</span>(wvl),startContinuum=<span class="number">80</span>,stopContinuum=<span class="number">90</span>,baseline=<span class="number">0.9</span>)
+
+
+fea.<span class="keyword">display</span>(<span class="string">'test'</span>,feature=<span class="string">'all'</span>)
+</code></pre><p><img src="./image/output_19_0.png" alt="png"></p>
+<pre><code>&lt;matplotlib<span class="class">.figure</span><span class="class">.Figure</span> at <span class="number">0</span>x1af814e0&gt;
+</code></pre><p>##GDAL</p>
+<pre><code>import osgeo<span class="class">.gdal</span> as gdal
+
+driver = gdal.<span class="function"><span class="title">GetDriverByName</span><span class="params">(<span class="string">'ENVI'</span>)</span></span>
+driver.<span class="function"><span class="title">Register</span><span class="params">()</span></span>
+
+
+
+
+<span class="number">70</span>
+
+
+
+
+salar_L = <span class="string">"E:\salar_test\SWIR_10.dat"</span>
+raster_L = gdal.<span class="function"><span class="title">Open</span><span class="params">(salar_L,gdal.GA_ReadOnly)</span></span>
+raster_array_L = raster_L.<span class="function"><span class="title">ReadAsArray</span><span class="params">()</span></span>
+
+
+<span class="function"><span class="title">imshow</span><span class="params">(raster_array_L[<span class="number">245</span>])</span></span>
+plt.<span class="function"><span class="title">colorbar</span><span class="params">()</span></span>
+
+
+
+
+&lt;matplotlib<span class="class">.colorbar</span><span class="class">.Colorbar</span> instance at <span class="number">0</span>x00000000377A4AC8&gt;
+</code></pre><p><img src="./image/output_24_1.png" alt="png"></p>
+<p>#查看可供调用的函数</p>
+<pre><code>#<span class="function"><span class="title">dir</span><span class="params">(raster_L)</span></span>
+
+
+raster_L<span class="class">.RasterCount</span>
+
+
+
+
+<span class="number">256</span>
+
+
+
+
+band1 = raster_L.<span class="function"><span class="title">GetRasterBand</span><span class="params">(<span class="number">1</span>)</span></span>
+band1array=band1.<span class="function"><span class="title">ReadAsArray</span><span class="params">()</span></span>
+
+
+<span class="function"><span class="title">imshow</span><span class="params">(band1.ReadAsArray(<span class="number">2</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">10</span>)</span></span>)
+plt.<span class="function"><span class="title">colorbar</span><span class="params">()</span></span>
+
+
+
+
+&lt;matplotlib<span class="class">.colorbar</span><span class="class">.Colorbar</span> instance at <span class="number">0</span>x0000000039A8BDC8&gt;
+</code></pre><p><img src="./image/output_31_1.png" alt="png"></p>
+<pre><code>band1.ComputeRasterMinMax()
+
+
+
+
+(<span class="number">21690.0</span>, <span class="number">47779.0</span>)
+
+
+
+
+type(band1array)
+
+
+
+
+numpy.ndarray
+
+
+
+
+<span class="keyword">import</span> gdalnumeric
+
+
+gdal.VersionInfo()
+
+
+
+
+<span class="string">'1110000'</span>
+
+
+
+
+% run <span class="string">E:</span>\OneDrive\GitHub\python\gdal_merge.py -n <span class="number">0</span> -o <span class="string">"D:\salar_subset\hypspex_merge_2.dat"</span> <span class="string">"D:\salar_subset\hypspex_10_2.dat"</span> <span class="string">"D:\salar_subset\hypspex_11.dat"</span>
+
+
+mergedata=envi.open(<span class="string">"D:\salar_subset\hypspex_merge.hdr"</span>,<span class="string">"D:\salar_subset\hypspex_merge.dat"</span>).load()
+
+
+imshow(mergedata,(<span class="number">80</span>,<span class="number">200</span>,<span class="number">48</span>))
+
+
+
+
+ImageView <span class="string">object:</span>
+  Display <span class="string">bands       :</span>  (<span class="number">80</span>, <span class="number">200</span>, <span class="number">48</span>)
+  <span class="string">Interpolation       :</span>  &lt;<span class="keyword">default</span>&gt;
+  RGB data <span class="string">limits     :</span>
+<span class="label">    R:</span> [<span class="number">0.0</span>, <span class="number">65289.0</span>]
+<span class="label">    G:</span> [<span class="number">0.0</span>, <span class="number">65360.0</span>]
+<span class="label">    B:</span> [<span class="number">0.0</span>, <span class="number">65301.0</span>]
+</code></pre><p><img src="./image/output_38_1.png" alt="png"></p>
+<pre><code>gdaldata = <span class="string">"D:\salar_subset\hypspex_merge_2.dat"</span>
+gdalmerge = gdal.Open(gdaldata,gdal.GA_ReadOnly)
+gdalmerge_array = gdalmerge.ReadAsArray()
+
+
+gdalmerge_band1=gdalmerge.GetRasterBand(<span class="number">10</span>)
+
+
+gdalmerge_band1.ReadAsArray()
+
+
+
+
+<span class="built_in">array</span>([[    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>, ..., <span class="number">30625</span>, <span class="number">30455</span>, <span class="number">30946</span>],
+       [    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>, ..., <span class="number">30864</span>, <span class="number">30393</span>, <span class="number">30726</span>],
+       [<span class="number">26740</span>, <span class="number">28835</span>, <span class="number">31702</span>, ..., <span class="number">31166</span>, <span class="number">30679</span>, <span class="number">30317</span>],
+       ..., 
+       [<span class="number">28383</span>, <span class="number">28289</span>, <span class="number">28214</span>, ...,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>],
+       [<span class="number">28214</span>, <span class="number">28207</span>, <span class="number">28200</span>, ...,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>],
+       [<span class="number">29390</span>, <span class="number">29411</span>, <span class="number">29324</span>, ...,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>]], dtype=uint16)
+
+
+
+
+histogram= gdalmerge_band1.GetHistogram()
+
+
+hisogram=np.<span class="built_in">array</span>(histogram)
+
+
+hisogram.shape
+
+
+
+
+(<span class="number">256</span>,)
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/11/22/SVD实现白化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 刘兰法
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

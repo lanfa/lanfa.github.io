@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/ArcGIS/" style="font-size: 10px;">ArcGIS</a> <a href="/tags/Clip/" style="font-size: 10px;">Clip</a> <a href="/tags/Data-Science/" style="font-size: 10px;">Data Science</a> <a href="/tags/Envi/" style="font-size: 12.5px;">Envi</a> <a href="/tags/GDAL/" style="font-size: 15px;">GDAL</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/HDF/" style="font-size: 10px;">HDF</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hyperspectral/" style="font-size: 10px;">Hyperspectral</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Modis/" style="font-size: 10px;">Modis</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/SPy/" style="font-size: 10px;">SPy</a> <a href="/tags/kmeans/" style="font-size: 10px;">kmeans</a> <a href="/tags/mosaic/" style="font-size: 10px;">mosaic</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/raster/" style="font-size: 10px;">raster</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
+						<a href="/tags/ArcGIS/" style="font-size: 10px;">ArcGIS</a> <a href="/tags/Clip/" style="font-size: 10px;">Clip</a> <a href="/tags/Data-Science/" style="font-size: 10px;">Data Science</a> <a href="/tags/Envi/" style="font-size: 12.5px;">Envi</a> <a href="/tags/GDAL/" style="font-size: 15px;">GDAL</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/HDF/" style="font-size: 10px;">HDF</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hyperspectral/" style="font-size: 10px;">Hyperspectral</a> <a href="/tags/Ipython/" style="font-size: 10px;">Ipython</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Modis/" style="font-size: 10px;">Modis</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/SPy/" style="font-size: 10px;">SPy</a> <a href="/tags/kmeans/" style="font-size: 10px;">kmeans</a> <a href="/tags/mosaic/" style="font-size: 10px;">mosaic</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/raster/" style="font-size: 10px;">raster</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
 					</div>
 				</section>
 				
@@ -196,11 +196,394 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Hyperspectral" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/27/Hyperspectral/" class="article-date">
+  	<time datetime="2015-11-27T18:30:16.000Z" itemprop="datePublished">2015-11-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/27/Hyperspectral/">Hyperspectral - Ipython</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>%pylab <span class="keyword">inline</span>
+
+Populating the interactive <span class="keyword">namespace</span> <span class="keyword">from</span> numpy <span class="keyword">and</span> matplotlib
+</code></pre><p>##Spectral Python</p>
+<pre><code><span class="built_in">from</span> spectral import *
+import spectral.io.envi <span class="keyword">as</span> envi
+
+
+spimg_L=envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10.hdr"</span>,<span class="string">"E:\salar_test\SWIR_10.dat"</span>).<span class="built_in">load</span>()
+spimg_L_CR=envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10_CR.hdr"</span>,<span class="string">"E:\salar_test\SWIR_10_CR.dat"</span>).<span class="built_in">load</span>()
+
+
+filename = envi.<span class="built_in">open</span>(<span class="string">"E:\salar_test\SWIR_10.hdr"</span>)
+
+
+type(filename.metadata.<span class="built_in">get</span>(<span class="string">'wavelength'</span>))
+
+
+
+
+list
+
+
+
+
+<span class="comment">#imshow(spimg_L.readBands(2))</span>
+imshow(spimg_L, (<span class="number">80</span>,<span class="number">220</span>,<span class="number">48</span>))
+<span class="comment">#imshow(classes=spimg_L.readBands(1))</span>
+plt.colorbar()
+
+
+
+
+&lt;matplotlib.colorbar.Colorbar instance <span class="keyword">at</span> <span class="number">0x000000000CA8E0C8</span>&gt;
+</code></pre><p><img src="./image/output_6_1.png" alt="png"></p>
+<pre><code>#<span class="function"><span class="title">view_cube</span><span class="params">(spimg_L, bands=[<span class="number">29</span>, <span class="number">19</span>, <span class="number">9</span>])</span></span>
+
+
+from lincr import removeContinuumInplace
+
+
+wvl = np.<span class="function"><span class="title">arange</span><span class="params">(spimg_L.nbands)</span></span>
+
+
+<span class="id">#dat</span> = dt_train_bands<span class="class">.ix</span>[<span class="number">10</span>]
+dat = np.<span class="function"><span class="title">array</span><span class="params">(spimg_L[<span class="number">2</span>,<span class="number">2</span>],dtype=float64)</span></span>
+crdat,ccdat = dat.<span class="function"><span class="title">copy</span><span class="params">()</span></span>,dat.<span class="function"><span class="title">copy</span><span class="params">()</span></span>
+<span class="function"><span class="title">removeContinuumInplace</span><span class="params">(wvl,crdat,<span class="number">0</span>,True)</span></span>
+<span class="function"><span class="title">removeContinuumInplace</span><span class="params">(wvl,ccdat,<span class="number">1</span>,True)</span></span>
+
+plt.<span class="function"><span class="title">subplot</span><span class="params">(<span class="number">211</span>)</span></span>
+plt.<span class="function"><span class="title">plot</span><span class="params">(wvl,dat,label=<span class="string">'Continuum Intact Spectrum'</span>)</span></span>
+plt.<span class="function"><span class="title">plot</span><span class="params">(wvl,ccdat,label=<span class="string">'Continuum Curve'</span>)</span></span>
+plt.<span class="function"><span class="title">legend</span><span class="params">(loc=<span class="string">'best'</span>)</span></span>
+
+plt.<span class="function"><span class="title">subplot</span><span class="params">(<span class="number">212</span>)</span></span>
+plt.<span class="function"><span class="title">plot</span><span class="params">(wvl,crdat,label=<span class="string">'Continuum Removed Spectrum'</span>)</span></span>
+plt.<span class="function"><span class="title">legend</span><span class="params">(loc=<span class="string">'best'</span>)</span></span>
+
+
+
+
+&lt;matplotlib<span class="class">.legend</span><span class="class">.Legend</span> at <span class="number">0</span>xe441940&gt;
+</code></pre><p><img src="./image/output_10_1.png" alt="png"></p>
+<pre><code>import pysptools<span class="class">.spectro</span> as spectro
+
+
+<span class="tag">a</span> = spectro.<span class="function"><span class="title">SpectrumConvexHullQuotient</span><span class="params">(list(dat)</span></span>,<span class="function"><span class="title">list</span><span class="params">(wvl)</span></span>)
+
+
+<span class="tag">a</span>.<span class="function"><span class="title">display</span><span class="params">(<span class="string">'test'</span>)</span></span>
+</code></pre><p><img src="./image/output_13_0.png" alt="png"></p>
+<pre><code>&lt;matplotlib.figure.Figure at <span class="number">0xea13fd0</span>&gt;
+
+
+
+plot(spimg_L_CR[<span class="number">2</span>,<span class="number">2</span>])
+
+
+
+
+<span class="annotation">[&lt;matplotlib.lines.Line2D at 0xeaa9400&gt;]</span>
+</code></pre><p><img src="./image/output_14_1.png" alt="png"></p>
+<pre><code>plt.<span class="function"><span class="title">plot</span><span class="params">(list(wvl)</span></span>,<span class="tag">a</span><span class="class">.crs</span>,label=<span class="string">'Continuum Removed Spectrum'</span>)
+
+
+
+
+[&lt;matplotlib<span class="class">.lines</span><span class="class">.Line2D</span> at <span class="number">0</span>x1ac49cf8&gt;]
+</code></pre><p><img src="./image/output_15_1.png" alt="png"></p>
+<pre><code>fea = spectro.FeaturesConvexHullQuotient?
+
+
+fea = spectro.FeaturesConvexHullQuotient
+
+
+fea = spectro.FeaturesConvexHullQuotient(<span class="keyword">list</span>(dat),<span class="keyword">list</span>(wvl),startContinuum=<span class="number">80</span>,stopContinuum=<span class="number">90</span>,baseline=<span class="number">0.9</span>)
+
+
+fea.<span class="keyword">display</span>(<span class="string">'test'</span>,feature=<span class="string">'all'</span>)
+</code></pre><p><img src="./image/output_19_0.png" alt="png"></p>
+<pre><code>&lt;matplotlib<span class="class">.figure</span><span class="class">.Figure</span> at <span class="number">0</span>x1af814e0&gt;
+</code></pre><p>##GDAL</p>
+<pre><code>import osgeo<span class="class">.gdal</span> as gdal
+
+driver = gdal.<span class="function"><span class="title">GetDriverByName</span><span class="params">(<span class="string">'ENVI'</span>)</span></span>
+driver.<span class="function"><span class="title">Register</span><span class="params">()</span></span>
+
+
+
+
+<span class="number">70</span>
+
+
+
+
+salar_L = <span class="string">"E:\salar_test\SWIR_10.dat"</span>
+raster_L = gdal.<span class="function"><span class="title">Open</span><span class="params">(salar_L,gdal.GA_ReadOnly)</span></span>
+raster_array_L = raster_L.<span class="function"><span class="title">ReadAsArray</span><span class="params">()</span></span>
+
+
+<span class="function"><span class="title">imshow</span><span class="params">(raster_array_L[<span class="number">245</span>])</span></span>
+plt.<span class="function"><span class="title">colorbar</span><span class="params">()</span></span>
+
+
+
+
+&lt;matplotlib<span class="class">.colorbar</span><span class="class">.Colorbar</span> instance at <span class="number">0</span>x00000000377A4AC8&gt;
+</code></pre><p><img src="./image/output_24_1.png" alt="png"></p>
+<p>#查看可供调用的函数</p>
+<pre><code>#<span class="function"><span class="title">dir</span><span class="params">(raster_L)</span></span>
+
+
+raster_L<span class="class">.RasterCount</span>
+
+
+
+
+<span class="number">256</span>
+
+
+
+
+band1 = raster_L.<span class="function"><span class="title">GetRasterBand</span><span class="params">(<span class="number">1</span>)</span></span>
+band1array=band1.<span class="function"><span class="title">ReadAsArray</span><span class="params">()</span></span>
+
+
+<span class="function"><span class="title">imshow</span><span class="params">(band1.ReadAsArray(<span class="number">2</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">10</span>)</span></span>)
+plt.<span class="function"><span class="title">colorbar</span><span class="params">()</span></span>
+
+
+
+
+&lt;matplotlib<span class="class">.colorbar</span><span class="class">.Colorbar</span> instance at <span class="number">0</span>x0000000039A8BDC8&gt;
+</code></pre><p><img src="./image/output_31_1.png" alt="png"></p>
+<pre><code>band1.ComputeRasterMinMax()
+
+
+
+
+(<span class="number">21690.0</span>, <span class="number">47779.0</span>)
+
+
+
+
+type(band1array)
+
+
+
+
+numpy.ndarray
+
+
+
+
+<span class="keyword">import</span> gdalnumeric
+
+
+gdal.VersionInfo()
+
+
+
+
+<span class="string">'1110000'</span>
+
+
+
+
+% run <span class="string">E:</span>\OneDrive\GitHub\python\gdal_merge.py -n <span class="number">0</span> -o <span class="string">"D:\salar_subset\hypspex_merge_2.dat"</span> <span class="string">"D:\salar_subset\hypspex_10_2.dat"</span> <span class="string">"D:\salar_subset\hypspex_11.dat"</span>
+
+
+mergedata=envi.open(<span class="string">"D:\salar_subset\hypspex_merge.hdr"</span>,<span class="string">"D:\salar_subset\hypspex_merge.dat"</span>).load()
+
+
+imshow(mergedata,(<span class="number">80</span>,<span class="number">200</span>,<span class="number">48</span>))
+
+
+
+
+ImageView <span class="string">object:</span>
+  Display <span class="string">bands       :</span>  (<span class="number">80</span>, <span class="number">200</span>, <span class="number">48</span>)
+  <span class="string">Interpolation       :</span>  &lt;<span class="keyword">default</span>&gt;
+  RGB data <span class="string">limits     :</span>
+<span class="label">    R:</span> [<span class="number">0.0</span>, <span class="number">65289.0</span>]
+<span class="label">    G:</span> [<span class="number">0.0</span>, <span class="number">65360.0</span>]
+<span class="label">    B:</span> [<span class="number">0.0</span>, <span class="number">65301.0</span>]
+</code></pre><p><img src="./image/output_38_1.png" alt="png"></p>
+<pre><code>gdaldata = <span class="string">"D:\salar_subset\hypspex_merge_2.dat"</span>
+gdalmerge = gdal.Open(gdaldata,gdal.GA_ReadOnly)
+gdalmerge_array = gdalmerge.ReadAsArray()
+
+
+gdalmerge_band1=gdalmerge.GetRasterBand(<span class="number">10</span>)
+
+
+gdalmerge_band1.ReadAsArray()
+
+
+
+
+<span class="built_in">array</span>([[    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>, ..., <span class="number">30625</span>, <span class="number">30455</span>, <span class="number">30946</span>],
+       [    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>, ..., <span class="number">30864</span>, <span class="number">30393</span>, <span class="number">30726</span>],
+       [<span class="number">26740</span>, <span class="number">28835</span>, <span class="number">31702</span>, ..., <span class="number">31166</span>, <span class="number">30679</span>, <span class="number">30317</span>],
+       ..., 
+       [<span class="number">28383</span>, <span class="number">28289</span>, <span class="number">28214</span>, ...,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>],
+       [<span class="number">28214</span>, <span class="number">28207</span>, <span class="number">28200</span>, ...,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>],
+       [<span class="number">29390</span>, <span class="number">29411</span>, <span class="number">29324</span>, ...,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>]], dtype=uint16)
+
+
+
+
+histogram= gdalmerge_band1.GetHistogram()
+
+
+hisogram=np.<span class="built_in">array</span>(histogram)
+
+
+hisogram.shape
+
+
+
+
+(<span class="number">256</span>,)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ipython/">Ipython</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-SVD实现白化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/22/SVD实现白化/" class="article-date">
+  	<time datetime="2015-11-22T18:16:43.098Z" itemprop="datePublished">2015-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在dnoise.py中的实现<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sigma = util.<span class="function"><span class="title">cov</span><span class="params">(M)</span></span></span><br><span class="line">U,S,V = np<span class="class">.linalg</span><span class="class">.svd</span>(sigma)</span><br><span class="line">S_1_2 = S**(-<span class="number">0.5</span>)</span><br><span class="line">S = np.<span class="function"><span class="title">diag</span><span class="params">(S_1_2.T)</span></span></span><br><span class="line">Aw = np.<span class="function"><span class="title">dot</span><span class="params">(V, np.dot(S, V.T)</span></span>)</span><br><span class="line">return np.<span class="function"><span class="title">dot</span><span class="params">(M, Aw)</span></span></span><br></pre></td></tr></table></figure></p>
+<p><a href="http://ufldl.stanford.edu/wiki/index.php/%E5%AE%9E%E7%8E%B0%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%99%BD%E5%8C%96" target="_blank" rel="external">http://ufldl.stanford.edu/wiki/index.php/%E5%AE%9E%E7%8E%B0%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%99%BD%E5%8C%96</a></p>
+<p><a href="http://blog.csdn.net/kuang_liu/article/details/16951461" target="_blank" rel="external">http://blog.csdn.net/kuang_liu/article/details/16951461</a></p>
+<p><a href="http://www.cnblogs.com/1024incn/p/4593200.html" target="_blank" rel="external">http://www.cnblogs.com/1024incn/p/4593200.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-SVD实现PCA降维" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/22/SVD实现PCA降维/" class="article-date">
+  	<time datetime="2015-11-22T18:08:45.739Z" itemprop="datePublished">2015-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在sklearn的pca源码中<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">U, S, V = linalg.<span class="function"><span class="title">svd</span><span class="params">(X, full_matrices=False)</span></span></span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html#!comments" target="_blank" rel="external">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html#!comments</a></p>
+<p><a href="http://blog.csdn.net/zoujianfa/article/details/8493868" target="_blank" rel="external">http://blog.csdn.net/zoujianfa/article/details/8493868</a></p>
+<p><a href="http://math.stackexchange.com/questions/3869/what-is-the-intuitive-relationship-between-svd-and-pca" target="_blank" rel="external">http://math.stackexchange.com/questions/3869/what-is-the-intuitive-relationship-between-svd-and-pca</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-pandas按照时间戳提取excel数据" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/11/22/pandas按照时间戳提取excel数据/" class="article-date">
-  	<time datetime="2015-11-22T13:41:37.175Z" itemprop="datePublished">2015-11-22</time>
+  	<time datetime="2015-11-22T14:48:57.482Z" itemprop="datePublished">2015-11-22</time>
 </a>
     </div>
   
@@ -431,62 +814,6 @@
 
 
   
-    <article id="post-hyperspectral data science" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/03/27/hyperspectral data science/" class="article-date">
-  	<time datetime="2015-03-27T18:30:16.000Z" itemprop="datePublished">2015-03-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/27/hyperspectral data science/">Hyperspectral Data Science</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w" alt=""></p>
-<p>from <a href="http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram" target="_blank" rel="external">The data science venn diagram</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hyperspectral/">Hyperspectral</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-Spectral Python(SPy) with Envi data" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -613,11 +940,11 @@
 
 
   
-    <article id="post-Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hyperspectral data science" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/03/10/Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive/" class="article-date">
-  	<time datetime="2015-03-10T14:30:16.000Z" itemprop="datePublished">2015-03-10</time>
+      <a href="/2015/03/27/hyperspectral data science/" class="article-date">
+  	<time datetime="2015-03-27T18:30:16.000Z" itemprop="datePublished">2015-03-27</time>
 </a>
     </div>
   
@@ -630,7 +957,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/10/Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive/">Setup your personal blog using Hexo, Github, Markdown and OneDrive</a>
+      <a class="article-title" href="/2015/03/27/hyperspectral data science/">Hyperspectral Data Science</a>
     </h1>
   
 
@@ -639,79 +966,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><strong>Environment</strong></li>
-</ul>
-<p>Windows8.1 64Bit<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/">tech</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/03/10/Setup-your-personal-blog-using-Hexo-Github-Markdown-and-OneDrive/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-hexo 学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/27/hexo 学习/" class="article-date">
-  	<time datetime="2015-01-27T18:30:16.000Z" itemprop="datePublished">2015-01-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/27/hexo 学习/">Hexo 学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="为Hexo_Blog增加ico图标"><a href="http://zhezhe.me/2013/12/20/december_24/" target="_blank" rel="external">为Hexo Blog增加ico图标</a></h3><ol>
-<li><p>把图转成ico格式 <a href="http://favicon-generator.org/" target="_blank" rel="external">在线favicon制作</a></p>
-</li>
-<li><p>把favicon文件保存到Hexo Blog文件夹中。具体位置在主题模板的source文件夹下 &gt; \themes\yilia\source\favicon.ico</p>
-</li>
-<li><blockquote>
-<p>themes/yilia/layout/_partial/head.ejs</p>
-</blockquote>
-</li>
-</ol>
-<p>把里面的<br><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value">favicon.png"</span> <span class="attribute">rel</span>=<span class="value">"icon"</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>替换成<br><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value">favicon.ico"</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/x-ico"</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+        <p><img src="http://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w" alt=""></p>
+<p>from <a href="http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram" target="_blank" rel="external">The data science venn diagram</a></p>
 
       
     </div>
@@ -720,7 +976,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hyperspectral/">Hyperspectral</a></li></ul>
 	</div>
 
       
@@ -740,81 +996,10 @@
 
 
   
-    <article id="post-Markdown 学习" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2015/01/27/Markdown 学习/" class="article-date">
-  	<time datetime="2015-01-27T18:30:16.000Z" itemprop="datePublished">2015-01-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/27/Markdown 学习/">Markdown 学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###列表</p>
-<ul>
-<li>文本1</li>
-<li>文本2</li>
-<li>文本3</li>
-</ul>
-<ol>
-<li>文本1</li>
-<li>文本2</li>
-<li>文本3</li>
-</ol>
-<p>###插入链接<br><a href="http://jianshu.io" target="_blank" rel="external">简书</a></p>
-<p>###图片<br><img src="http://ww4.sinaimg.cn/bmiddle/aa397b7fjw1dzplsgpdw5j.jpg" alt=""></p>
-<p>###引用</p>
-<blockquote>
-<p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。</p>
-</blockquote>
-<p>###粗体 斜体<br>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。</p>
-<p>###表格<br>| Tables        | Are           | Cool  |<br>| ————- |:————-:| —–:|<br>| col 3 is      | right-aligned | $1600 |<br>| col 2 is      | centered      |   $12 |<br>| zebra stripes | are neat      |    $1 |</p>
-<p>###latex</p>
-<p><img src="http://latex.codecogs.com/gif.latex?\prod%20\(n_{i}\)+1" alt=""></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
