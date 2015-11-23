@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lanfa' Blog</title><link href="lanfa.github.io/" rel="alternate"></link><link href="lanfa.github.io/feeds/python.atom.xml" rel="self"></link><id>lanfa.github.io/</id><updated>2015-03-10T15:30:16+08:00</updated><entry><title>pandas按照时间戳提取多个文件夹指定excel文件数据</title><link href="lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/" rel="alternate"></link><updated>2015-03-10T15:30:16+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-03-10:lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</id><summary type="html">&lt;p&gt;'''
+import os
+import pandas as pd&lt;/p&gt;
+&lt;p&gt;path = "F:/b7beb8bf-58d9-4e58-a945-7b6e1dc7705f/2012"
+subfolders = os.listdir(path)&lt;/p&gt;
+&lt;h1&gt;初始化一个pandas.core.frame.DataFrame类型的变量，存放提取结果&lt;/h1&gt;
+&lt;p&gt;dt_Total = pd.DataFrame() &lt;/p&gt;
+&lt;h1&gt;遍历子文件夹&lt;/h1&gt;
+&lt;p&gt;for folder in subfolders:
+    files = os.listdir(path+"/"+folder)
+    # 遍历子文件夹内的文件，并提取出文件名含有“20120629”的excel文件名，可能有0个或1个
+    excel = [x for x in files if "20120629" in x]
+    if excel.&lt;strong&gt;len&lt;/strong&gt;()&amp;gt;0:
+        dt=pd.read_csv(path+"/"+folder+"/"+excel[0])
+        #----------------------------------尝试无果----------------------------------------------
+        #dt_Total = dt_Total.append(dt[510:511])
+        #dt_Total = dt_Total.append(dt.loc[dt['Time']=='2012-06-29 11:40:10'])
+        #dt_Total = dt_Total.append(df.loc['2012-06-29 08:40:50':'2012-06-29 08:41:50'])
+        #-----------------------------------------------------------------------------------------
+        # 
+        # 根据excel第一列的时间来提取指定时间段的行数据，以提取12：40的数据为例
+        # 参考 http://pandas.pydata.org/pandas-docs/stable/timeseries.html
+        # 注意多个条件时，不是&amp;amp;， 而是np.logical_and(index.hour==12,index.minute==40)
+        #
+        #-----------------------------------------------------------------------------------------
+        dtTime = pd.Series(dt.Time)
+        index = pd.DatetimeIndex(dtTime)
+        dt_Total = dt_Total.append(dt[np.logical_and(index.hour==12,index.minute==40)])
+'''&lt;/p&gt;</summary><category term="Hexo"></category><category term="Github"></category><category term="Markdown"></category><category term="tech"></category></entry></feed>

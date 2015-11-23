@@ -1,0 +1,30 @@
+  <div class="item">
+        <div class="item-title">
+            <h2><a href="lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/">pandas按照时间戳提取多个文件夹指定excel文件数据</a></h2>
+          <a href="category/python.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Python</a> 
+          <a href="lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
+          <span class="label label-default light">10/Mar/2015 Tue</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+        <p>
+            <p>'''
+import os
+import pandas as pd</p>
+<p>path = "F:/b7beb8bf-58d9-4e58-a945-7b6e1dc7705f/2012"
+subfolders = os.listdir(path)</p>
+<h1>初始化一个pandas.core.frame.DataFrame类型的变量，存放提取结果</h1>
+<p>dt_Total = pd.DataFrame() </p>
+<h1>遍历子文件夹</h1>
+<p>for folder in subfolders:
+    files = os.listdir(path+"/"+folder)
+    # 遍历子文件夹内的文件，并提取出文件名含有“20120629”的excel文件名，可能有0个或1个
+    excel = [x for x in files if "20120629" in x]
+    if excel.<strong>len ...</strong></p>
+        </p>
+
+        <!-- read more button -->
+        <a href="lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/" class="btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+ 

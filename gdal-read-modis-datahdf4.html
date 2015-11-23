@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>GDAL read Modis data(HDF4)</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">lanfa </a></h1>
+                <nav><ul>
+                    <li><a href="/category/personal.html">Personal</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
+                    <li class="active"><a href="/category/rs.html">RS</a></li>
+                    <li><a href="/category/setup.html">Setup</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/gdal-read-modis-datahdf4.html" rel="bookmark"
+           title="Permalink to GDAL read Modis data(HDF4)">GDAL read Modis data(HDF4)</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-03-27T19:30:16+01:00">
+                Published: Fri 27 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lanfa.html">lanfa</a>
+        </address>
+<p>In <a href="/category/rs.html">RS</a>.</p>
+<p>tags: <a href="/tag/gdal.html">GDAL</a> <a href="/tag/python.html">Python</a> <a href="/tag/modis.html">Modis</a> <a href="/tag/hdf.html">HDF</a> <a href="/tag/tech.html">tech</a> </p>
+</footer><!-- /.post-info -->      <h2><strong><a href="http://jgomezdans.github.io/gdal_notes/ipython.html">Reference Link</a></strong></h2>
+<ul>
+<li><strong>Code</strong></li>
+</ul>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+
+
+<div class="highlight"><pre>gdal_dataset=gdal.Open(&quot;D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf&quot;)
+gdal_dataset.GetSubDatasets()  
+</pre></div>
+
+
+<!-- more -->
+
+<blockquote>
+<p>[('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_1',
+  '[2400x2400] Land_Cover_Type_1 MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_2',
+  '[2400x2400] Land_Cover_Type_2 MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_3',
+  '[2400x2400] Land_Cover_Type_3 MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_4',
+  '[2400x2400] Land_Cover_Type_4 MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_5',
+  '[2400x2400] Land_Cover_Type_5 MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_1_Assessment',
+  '[2400x2400] Land_Cover_Type_1_Assessment MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_2_Assessment',
+  '[2400x2400] Land_Cover_Type_2_Assessment MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_3_Assessment',
+  '[2400x2400] Land_Cover_Type_3_Assessment MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_4_Assessment',
+  '[2400x2400] Land_Cover_Type_4_Assessment MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_5_Assessment',
+  '[2400x2400] Land_Cover_Type_5_Assessment MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_QC',
+  '[1x2400x2400] Land_Cover_Type_QC MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_1_Secondary',
+  '[2400x2400] Land_Cover_Type_1_Secondary MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_1_Secondary_Percent',
+  '[2400x2400] Land_Cover_Type_1_Secondary_Percent MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:LC_Property_1',
+  '[2400x2400] LC_Property_1 MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:LC_Property_2',
+  '[2400x2400] LC_Property_2 MOD12Q1 (8-bit unsigned integer)'),
+ ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:LC_Property_3',
+  '[2400x2400] LC_Property_3 MOD12Q1 (8-bit unsigned integer)')]</p>
+</blockquote>
+<div class="highlight"><pre>lc_data = gdal.Open ( &#39;HDF4_EOS:EOS_GRID:&quot;D:\\PythonWork\\MCD12Q1\\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf&quot;:MOD12Q1:Land_Cover_Type_1&#39; )
+lc = lc_data.ReadAsArray()
+</pre></div>
+
+
+<p>Show Modis Data</p>
+<div class="highlight"><pre>plt.imshow ( lc, interpolation=&#39;nearest&#39;, vmin=0, cmap=plt.cm.gist_earth)
+plt.colorbar()
+</pre></div>
+
+
+<p><img alt="" src="http://lanfa-github.qiniudn.com/2_modisShow.png" /></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

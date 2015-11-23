@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>pandas按照时间戳提取多个文件夹指定excel文件数据</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">lanfa </a></h1>
+                <nav><ul>
+                    <li><a href="/category/personal.html">Personal</a></li>
+                    <li class="active"><a href="/category/python.html">Python</a></li>
+                    <li><a href="/category/rs.html">RS</a></li>
+                    <li><a href="/category/setup.html">Setup</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju.html" rel="bookmark"
+           title="Permalink to pandas按照时间戳提取多个文件夹指定excel文件数据">pandas按照时间戳提取多个文件夹指定excel文件数据</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-03-10T15:30:16+01:00">
+                Published: Tue 10 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lanfa.html">lanfa</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/hexo.html">Hexo</a> <a href="/tag/github.html">Github</a> <a href="/tag/markdown.html">Markdown</a> <a href="/tag/tech.html">tech</a> </p>
+</footer><!-- /.post-info -->      <p>'''
+import os
+import pandas as pd</p>
+<p>path = "F:/b7beb8bf-58d9-4e58-a945-7b6e1dc7705f/2012"
+subfolders = os.listdir(path)</p>
+<h1>初始化一个pandas.core.frame.DataFrame类型的变量，存放提取结果</h1>
+<p>dt_Total = pd.DataFrame() </p>
+<h1>遍历子文件夹</h1>
+<p>for folder in subfolders:
+    files = os.listdir(path+"/"+folder)
+    # 遍历子文件夹内的文件，并提取出文件名含有“20120629”的excel文件名，可能有0个或1个
+    excel = [x for x in files if "20120629" in x]
+    if excel.<strong>len</strong>()&gt;0:
+        dt=pd.read_csv(path+"/"+folder+"/"+excel[0])
+        #----------------------------------尝试无果----------------------------------------------
+        #dt_Total = dt_Total.append(dt[510:511])
+        #dt_Total = dt_Total.append(dt.loc[dt['Time']=='2012-06-29 11:40:10'])
+        #dt_Total = dt_Total.append(df.loc['2012-06-29 08:40:50':'2012-06-29 08:41:50'])
+        #-----------------------------------------------------------------------------------------
+        # 
+        # 根据excel第一列的时间来提取指定时间段的行数据，以提取12：40的数据为例
+        # 参考 http://pandas.pydata.org/pandas-docs/stable/timeseries.html
+        # 注意多个条件时，不是&amp;， 而是np.logical_and(index.hour==12,index.minute==40)
+        #
+        #-----------------------------------------------------------------------------------------
+        dtTime = pd.Series(dt.Time)
+        index = pd.DatetimeIndex(dtTime)
+        dt_Total = dt_Total.append(dt[np.logical_and(index.hour==12,index.minute==40)])
+'''</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
