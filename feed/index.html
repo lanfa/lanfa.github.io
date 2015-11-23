@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lanfa' Blog</title><link>lanfa.github.io/</link><description>Not only about network</description><atom:link href="lanfa.github.io/feed/index.html" rel="self"></atom:link><lastBuildDate>Tue, 31 Mar 2015 12:30:16 +0800</lastBuildDate><item><title>Hyperspectral data mosaic using GDAL</title><link>lanfa.github.io/2015/03/hyperspectral-data-mosaic-using-gdal/</link><description>&lt;h1&gt;Problem using ENVI&lt;/h1&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lanfa' Blog</title><link>/</link><description>Remote Sensing Data Science</description><atom:link href="/feed/index.html" rel="self"></atom:link><lastBuildDate>Tue, 31 Mar 2015 12:30:16 +0800</lastBuildDate><item><title>Hyperspectral data mosaic using GDAL</title><link>/2015/03/hyperspectral-data-mosaic-using-gdal/</link><description>&lt;h1&gt;Problem using ENVI&lt;/h1&gt;
 &lt;hr /&gt;
 &lt;h2&gt;&lt;a href="http://www.exelisvis.com/docs/MosaicSeamless.html"&gt;The Seamless Mosaic tool is limited to 10 bands. If you are using hyperspectral imagery, you should create a spectral subset of no more than 10 bands before using the Seamless Mosaic tool.&lt;/a&gt;&lt;/h2&gt;
 &lt;h1&gt;Solved using GDAL&lt;/h1&gt;
@@ -12,7 +12,7 @@
 &lt;h1&gt;Prepared data&lt;/h1&gt;
 &lt;p&gt;&lt;img alt="" src="http://lanfa-github.qiniudn.com/3_HyperimgL.jpg" /&gt;  &lt;img alt="" src="http://lanfa-github.qiniudn.com/3_HyperimgR.jpg" /&gt;&lt;/p&gt;
 &lt;h1&gt;Result&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="" src="http://lanfa-github.qiniudn.com/3_HyperimgMerge.jpg" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Tue, 31 Mar 2015 12:30:16 +0800</pubDate><guid>tag:,2015-03-31:lanfa.github.io/2015/03/hyperspectral-data-mosaic-using-gdal/</guid><category>GDAL</category><category>Python</category><category>mosaic</category><category>tech</category></item><item><title>GDAL read Modis data(HDF4)</title><link>lanfa.github.io/2015/03/gdal-read-modis-datahdf4/</link><description>&lt;h2&gt;&lt;strong&gt;&lt;a href="http://jgomezdans.github.io/gdal_notes/ipython.html"&gt;Reference Link&lt;/a&gt;&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="" src="http://lanfa-github.qiniudn.com/3_HyperimgMerge.jpg" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Tue, 31 Mar 2015 12:30:16 +0800</pubDate><guid>tag:,2015-03-31:2015/03/hyperspectral-data-mosaic-using-gdal/</guid><category>GDAL</category><category>Python</category><category>mosaic</category><category>tech</category></item><item><title>GDAL read Modis data(HDF4)</title><link>/2015/03/gdal-read-modis-datahdf4/</link><description>&lt;h2&gt;&lt;strong&gt;&lt;a href="http://jgomezdans.github.io/gdal_notes/ipython.html"&gt;Reference Link&lt;/a&gt;&lt;/strong&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -73,7 +73,7 @@ plt.colorbar()
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="http://lanfa-github.qiniudn.com/2_modisShow.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Fri, 27 Mar 2015 19:30:16 +0800</pubDate><guid>tag:,2015-03-27:lanfa.github.io/2015/03/gdal-read-modis-datahdf4/</guid><category>GDAL</category><category>Python</category><category>Modis</category><category>HDF</category><category>tech</category></item><item><title>pandas按照时间戳提取多个文件夹指定excel文件数据</title><link>lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</link><description>&lt;p&gt;'''
+&lt;p&gt;&lt;img alt="" src="http://lanfa-github.qiniudn.com/2_modisShow.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Fri, 27 Mar 2015 19:30:16 +0800</pubDate><guid>tag:,2015-03-27:2015/03/gdal-read-modis-datahdf4/</guid><category>GDAL</category><category>Python</category><category>Modis</category><category>HDF</category><category>tech</category></item><item><title>pandas按照时间戳提取多个文件夹指定excel文件数据</title><link>/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</link><description>&lt;p&gt;'''
 import os
 import pandas as pd&lt;/p&gt;
 &lt;p&gt;path = "F:/b7beb8bf-58d9-4e58-a945-7b6e1dc7705f/2012"
@@ -101,7 +101,7 @@ subfolders = os.listdir(path)&lt;/p&gt;
         dtTime = pd.Series(dt.Time)
         index = pd.DatetimeIndex(dtTime)
         dt_Total = dt_Total.append(dt[np.logical_and(index.hour==12,index.minute==40)])
-'''&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Tue, 10 Mar 2015 15:30:16 +0800</pubDate><guid>tag:,2015-03-10:lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</guid><category>Hexo</category><category>Github</category><category>Markdown</category><category>tech</category></item><item><title>Setup your personal blog using Hexo, Github, Markdown and OneDrive</title><link>lanfa.github.io/2015/03/setup-your-personal-blog-using-hexo-github-markdown-and-onedrive/</link><description>&lt;ul&gt;
+'''&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Tue, 10 Mar 2015 15:30:16 +0800</pubDate><guid>tag:,2015-03-10:2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</guid><category>Hexo</category><category>Github</category><category>Markdown</category><category>tech</category></item><item><title>Setup your personal blog using Hexo, Github, Markdown and OneDrive</title><link>/2015/03/setup-your-personal-blog-using-hexo-github-markdown-and-onedrive/</link><description>&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Environment&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Windows8.1 64Bit
@@ -196,7 +196,7 @@ hexo d
 &lt;p&gt;edit the file:
 &lt;img alt="" src="http://lanfa-github.qiniudn.com/0content.png" /&gt;
 The content can be writen using Markdown&lt;/p&gt;
-&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Tue, 10 Mar 2015 15:30:16 +0800</pubDate><guid>tag:,2015-03-10:lanfa.github.io/2015/03/setup-your-personal-blog-using-hexo-github-markdown-and-onedrive/</guid><category>Hexo</category><category>Github</category><category>Markdown</category><category>tech</category></item><item><title>"Curriculum Vitae"</title><link>lanfa.github.io/2015/01/curriculum-vitae/</link><description>&lt;hr /&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Tue, 10 Mar 2015 15:30:16 +0800</pubDate><guid>tag:,2015-03-10:2015/03/setup-your-personal-blog-using-hexo-github-markdown-and-onedrive/</guid><category>Hexo</category><category>Github</category><category>Markdown</category><category>tech</category></item><item><title>"Curriculum Vitae"</title><link>/2015/01/curriculum-vitae/</link><description>&lt;hr /&gt;
 &lt;p&gt;&lt;img alt="" src="http://lanfa-github.qiniudn.com/touxiang.png" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;ul&gt;
@@ -331,4 +331,4 @@ Extra QT, ArcEngine&lt;/p&gt;
 Lanfa L., Zhan L., et al., (2013).Aboveground-Surface-Underground Model Integrated Visualization Based on GIS. The third high-end digital oilfield forum and international academic seminar in Xi’an. [In Chinese].
 Lanfa L., Zhan L., et al., (2013). A Pilot Study of Visual Data Mining Based on 3D Modeling. The 29th annual conference of the Chinese geophysical society. [In Chinese].
 Yongliang B., Zhan L., Lanfa L., et al., (2014). A new method of Multi-scale Geologic Modeling and Display. Journal of Earth Science. 25(3), 537-543.&lt;/p&gt;
-&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate><guid>tag:,2015-01-01:lanfa.github.io/2015/01/curriculum-vitae/</guid></item></channel></rss>
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate><guid>tag:,2015-01-01:2015/01/curriculum-vitae/</guid></item></channel></rss>

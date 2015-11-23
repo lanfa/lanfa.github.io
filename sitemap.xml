@@ -4,161 +4,161 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>lanfa.github.io/</loc>
-<lastmod>2015-11-23T20:34:30-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2015-11-23T21:22:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/archives.html</loc>
-<lastmod>2015-11-23T20:34:30-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2015-11-23T21:22:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tags.html</loc>
-<lastmod>2015-11-23T20:34:30-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2015-11-23T21:22:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/categories.html</loc>
-<lastmod>2015-11-23T20:34:30-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2015-11-23T21:22:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/2015/03/hyperspectral-data-mosaic-using-gdal/</loc>
+<loc>/2015/03/hyperspectral-data-mosaic-using-gdal/</loc>
 <lastmod>2015-03-31T12:30:16+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/2015/03/gdal-read-modis-datahdf4/</loc>
+<loc>/2015/03/gdal-read-modis-datahdf4/</loc>
 <lastmod>2015-03-27T19:30:16+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</loc>
+<loc>/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</loc>
 <lastmod>2015-03-10T15:30:16+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/2015/03/setup-your-personal-blog-using-hexo-github-markdown-and-onedrive/</loc>
+<loc>/2015/03/setup-your-personal-blog-using-hexo-github-markdown-and-onedrive/</loc>
 <lastmod>2015-03-10T15:30:16+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/2015/01/curriculum-vitae/</loc>
+<loc>/2015/01/curriculum-vitae/</loc>
 <lastmod>2015-01-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/category/personal.html</loc>
+<loc>/category/personal.html</loc>
 <lastmod>2015-01-01T00:00:00+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/category/python.html</loc>
+<loc>/category/python.html</loc>
 <lastmod>2015-03-10T15:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/category/rs.html</loc>
+<loc>/category/rs.html</loc>
 <lastmod>2015-03-31T12:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/category/setup.html</loc>
+<loc>/category/setup.html</loc>
 <lastmod>2015-03-10T15:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/modis.html</loc>
+<loc>/tag/modis.html</loc>
 <lastmod>2015-03-27T19:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/github.html</loc>
+<loc>/tag/github.html</loc>
 <lastmod>2015-03-10T15:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/hexo.html</loc>
+<loc>/tag/hexo.html</loc>
 <lastmod>2015-03-10T15:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/python.html</loc>
+<loc>/tag/python.html</loc>
 <lastmod>2015-03-31T12:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/hdf.html</loc>
+<loc>/tag/hdf.html</loc>
 <lastmod>2015-03-27T19:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/markdown.html</loc>
+<loc>/tag/markdown.html</loc>
 <lastmod>2015-03-10T15:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/tech.html</loc>
+<loc>/tag/tech.html</loc>
 <lastmod>2015-03-31T12:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/gdal.html</loc>
+<loc>/tag/gdal.html</loc>
 <lastmod>2015-03-31T12:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/tag/mosaic.html</loc>
+<loc>/tag/mosaic.html</loc>
 <lastmod>2015-03-31T12:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>lanfa.github.io/author/lanfa.html</loc>
+<loc>/author/lanfa.html</loc>
 <lastmod>2015-03-31T12:30:16+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
