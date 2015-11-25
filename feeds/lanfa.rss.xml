@@ -1,8 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>刘兰法De博客</title><link>/</link><description>Remote Sensing Data Science</description><atom:link href="/feeds/lanfa.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 23 Nov 2015 00:00:00 +0800</lastBuildDate><item><title>"Setup the blog"</title><link>/2015/11/setup-the-blog/</link><description>&lt;p&gt;This blog is hosted by GitHub Pages Using Pelican.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>刘兰法De博客</title><link>/</link><description>Remote Sensing Data Science</description><atom:link href="/feeds/lanfa.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 25 Nov 2015 13:00:00 +0800</lastBuildDate><item><title>Example - Python to IDL Bridge</title><link>/2015/11/example-python-to-idl-bridge/</link><description>&lt;p&gt;The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;idlpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IDL&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!-- more --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Get the file, read it as Raster and view it in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;e = IDL.ENVI() # The Envi window will be popped out
+File = &amp;quot;C:\\Program Files\\Exelis53\\envi53\\data\\qb_boulder_msi&amp;quot;
+raster1 = e.OpenRaster(File)
+view1 = e.GetView()
+layer1 = view1.CreateLayer(raster1)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Raster Convert to Array. In this section, How to put parameters to the GetData() method?&lt;br /&gt;
+an alternative way to subset the original data is to process the output 'data', and its type is &lt;em&gt;numpy.ndarray&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;#data = raster1.GetData(&amp;quot;BANDS=[0], SUB_RECT=[100,449,550,899]&amp;quot;) #didn&amp;#39;t work
+data = raster1.GetData()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Array to Raster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;new_raster = IDL.ENVIRaster(data)
+new_raster.save()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Perform MNF Transform&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Task = IDL.ENVITask(&amp;#39;ForwardMNFTransform&amp;#39;) 
+Task.INPUT_RASTER = new_raster 
+Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename() 
+Task.Execute()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;View the MNF result in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;DataColl = e.Data
+DataColl.Add(Task.Output_Raster)
+View1 = e.GetView()
+Layer1 = View1.CreateLayer(Task.Output_Raster)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;References&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.http://www.exelisvis.com/docs/pythontoidl.html&lt;/p&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Wed, 25 Nov 2015 13:00:00 +0800</pubDate><guid>tag:,2015-11-25:2015/11/example-python-to-idl-bridge/</guid><category>IDL</category><category>python</category><category>MNF</category></item><item><title>Example - MNF Transform using IDL</title><link>/2015/11/example-mnf-transform-using-idl/</link><description>&lt;p&gt;Ipython + IDL environment setup [1]&lt;/p&gt;
+&lt;p&gt;the following codes were written in Ipython, using ENVI API...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Get the file, read it as Raster and view it in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;e = ENVI()
+file1 = FILEPATH(&amp;#39;qb_boulder_msi&amp;#39;, ROOT_DIR=e.ROOT_DIR, $
+  SUBDIRECTORY = [&amp;#39;data&amp;#39;])
+raster1 = e.OpenRaster(file1)
+view1 = e.GetView()
+layer1 = view1.CreateLayer(raster1)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!-- more --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Get the subset and return an Array&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;data = raster1.GetData(BANDS=[0,1,2,3], SUB_RECT=[100,449,550,899])
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Convert Array to Raster &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;new_raster = ENVIRaster(data)
+new_raster.Save
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Perform MNF Transform on the subset data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Task = ENVITask(&amp;#39;ForwardMNFTransform&amp;#39;) 
+Task.INPUT_RASTER = new_raster 
+Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename() 
+Task.Execute
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;View the MNF result in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;DataColl = e.Data
+
+; Add the output to the data collection
+DataColl.Add, Task.Output_Raster
+
+; Display the result
+View1 = e.GetView()
+Layer1 = View1.CreateLayer(Task.Output_Raster)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;References:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;https://www.exelisvis.com/docs/idl_kernel.html&lt;/li&gt;
+&lt;li&gt;https://www.exelisvis.com/docs/envi__openraster.html&lt;/li&gt;
+&lt;li&gt;http://www.exelisvis.com/docs/enviRaster__GetData.html&lt;/li&gt;
+&lt;li&gt;https://www.exelisvis.com/docs/enviforwardmnftransformtask.html&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lanfa</dc:creator><pubDate>Wed, 25 Nov 2015 12:00:00 +0800</pubDate><guid>tag:,2015-11-25:2015/11/example-mnf-transform-using-idl/</guid><category>IDL</category><category>python</category><category>MNF</category></item><item><title>Setup the blog</title><link>/2015/11/setup-the-blog/</link><description>&lt;p&gt;This blog is hosted by GitHub Pages Using Pelican.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;pelican C:/githubBlog/blogPelican/content -o C:/githubBlog/blogPelican/output -s C:\githubBlog/blogPelican/pelicanconf.py
 
-cd output
+cd C:/githubBlog/blogPelican/output
 
 python -m pelican.server
 &lt;/pre&gt;&lt;/div&gt;

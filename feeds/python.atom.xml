@@ -1,30 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>刘兰法De博客</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2015-03-10T15:30:16+08:00</updated><entry><title>pandas按照时间戳提取多个文件夹指定excel文件数据</title><link href="/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/" rel="alternate"></link><updated>2015-03-10T15:30:16+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-03-10:2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/</id><summary type="html">&lt;p&gt;'''
-import os
-import pandas as pd&lt;/p&gt;
-&lt;p&gt;path = "F:/b7beb8bf-58d9-4e58-a945-7b6e1dc7705f/2012"
-subfolders = os.listdir(path)&lt;/p&gt;
-&lt;h1&gt;初始化一个pandas.core.frame.DataFrame类型的变量，存放提取结果&lt;/h1&gt;
-&lt;p&gt;dt_Total = pd.DataFrame() &lt;/p&gt;
-&lt;h1&gt;遍历子文件夹&lt;/h1&gt;
-&lt;p&gt;for folder in subfolders:
-    files = os.listdir(path+"/"+folder)
-    # 遍历子文件夹内的文件，并提取出文件名含有“20120629”的excel文件名，可能有0个或1个
-    excel = [x for x in files if "20120629" in x]
-    if excel.&lt;strong&gt;len&lt;/strong&gt;()&amp;gt;0:
-        dt=pd.read_csv(path+"/"+folder+"/"+excel[0])
-        #----------------------------------尝试无果----------------------------------------------
-        #dt_Total = dt_Total.append(dt[510:511])
-        #dt_Total = dt_Total.append(dt.loc[dt['Time']=='2012-06-29 11:40:10'])
-        #dt_Total = dt_Total.append(df.loc['2012-06-29 08:40:50':'2012-06-29 08:41:50'])
-        #-----------------------------------------------------------------------------------------
-        # 
-        # 根据excel第一列的时间来提取指定时间段的行数据，以提取12：40的数据为例
-        # 参考 http://pandas.pydata.org/pandas-docs/stable/timeseries.html
-        # 注意多个条件时，不是&amp;amp;， 而是np.logical_and(index.hour==12,index.minute==40)
-        #
-        #-----------------------------------------------------------------------------------------
-        dtTime = pd.Series(dt.Time)
-        index = pd.DatetimeIndex(dtTime)
-        dt_Total = dt_Total.append(dt[np.logical_and(index.hour==12,index.minute==40)])
-'''&lt;/p&gt;</summary><category term="Hexo"></category><category term="Github"></category><category term="Markdown"></category><category term="tech"></category></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>刘兰法De博客</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2015-11-25T13:00:00+08:00</updated><entry><title>Example - Python to IDL Bridge</title><link href="/2015/11/example-python-to-idl-bridge/" rel="alternate"></link><updated>2015-11-25T13:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-25:2015/11/example-python-to-idl-bridge/</id><summary type="html">&lt;p&gt;The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;idlpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IDL&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!-- more --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Get the file, read it as Raster and view it in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;e = IDL.ENVI() # The Envi window will be popped out
+File = &amp;quot;C:\\Program Files\\Exelis53\\envi53\\data\\qb_boulder_msi&amp;quot;
+raster1 = e.OpenRaster(File)
+view1 = e.GetView()
+layer1 = view1.CreateLayer(raster1)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Raster Convert to Array. In this section, How to put parameters to the GetData() method?&lt;br /&gt;
+an alternative way to subset the original data is to process the output 'data', and its type is &lt;em&gt;numpy.ndarray&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;#data = raster1.GetData(&amp;quot;BANDS=[0], SUB_RECT=[100,449,550,899]&amp;quot;) #didn&amp;#39;t work
+data = raster1.GetData()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Array to Raster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;new_raster = IDL.ENVIRaster(data)
+new_raster.save()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Perform MNF Transform&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Task = IDL.ENVITask(&amp;#39;ForwardMNFTransform&amp;#39;) 
+Task.INPUT_RASTER = new_raster 
+Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename() 
+Task.Execute()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;View the MNF result in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;DataColl = e.Data
+DataColl.Add(Task.Output_Raster)
+View1 = e.GetView()
+Layer1 = View1.CreateLayer(Task.Output_Raster)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;References&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.http://www.exelisvis.com/docs/pythontoidl.html&lt;/p&gt;
+&lt;/blockquote&gt;</summary><category term="IDL"></category><category term="python"></category><category term="MNF"></category></entry></feed>

@@ -86,46 +86,18 @@
 
       <div class="row">
         <div id="blog_main_area" class="left col-md-9">
-  <!-- blog item -->
+  <!-- article title -->
+  <header>
+      <h1>Example - MNF Transform using IDL</h1>
+    <small class="fsize13">
+            <a href="/category/idl.html" rel="tag tooltip" class="label label-default light" data-placement="right" data-original-title="1 article in this category"><i class="fa fa-dot-circle-o"></i> IDL</a>
+      <a href="/2015/11/example-mnf-transform-using-idl/#disqus_thread" class="scrollTo label label-default light" data-disqus-identifier="2015/11/example-mnf-transform-using-idl/"><i class="fa fa-comment-o"></i> ?? Comments</a>
+      <span class="label label-default light">25/Nov/2015 Wed</span> 
+    </small>
+  </header>
 
-      <div class="item">
-        <div class="item-title">
-            <h2><a class="theme_link" href="/2015/11/example-python-to-idl-bridge/">Example - Python to IDL Bridge</a></h2>
-          <a href="category/python.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Python</a> 
-          <a href="/2015/11/example-python-to-idl-bridge/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
-          <span class="label label-default light">25/Nov/2015 Wed</span>
-        </div>
-        <!-- image -->
-
-        <!-- blog short preview -->
-            <p>The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. </p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">idlpy</span> <span class="kn">import</span> <span class="n">IDL</span>
-</pre></div>
-
-
-<!-- more -->
-
-<ul>
-<li>Get the file, read it as Raster and view it in ENVI</li>
-</ul>
-<div class="highlight"><pre>e = IDL.ENVI() # The Envi window will be popped out
-File = &quot;C:\\Program Files\\Exelis53\\envi53\\data\\qb_boulder_msi&quot;
-raster1 ...</pre></div></!-->
-
-        <!-- read more button -->
-        <a href="/2015/11/example-python-to-idl-bridge/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
-      </div>
-      <div class="item">
-        <div class="item-title">
-            <h2><a class="theme_link" href="/2015/11/example-mnf-transform-using-idl/">Example - MNF Transform using IDL</a></h2>
-          <a href="category/idl.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> IDL</a> 
-          <a href="/2015/11/example-mnf-transform-using-idl/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
-          <span class="label label-default light">25/Nov/2015 Wed</span>
-        </div>
-        <!-- image -->
-
-        <!-- blog short preview -->
-            <p>Ipython + IDL environment setup [1]</p>
+  <article class='content'>
+    <p>Ipython + IDL environment setup [1]</p>
 <p>the following codes were written in Ipython, using ENVI API...</p>
 <ul>
 <li>Get the file, read it as Raster and view it in ENVI</li>
@@ -142,49 +114,82 @@ layer1 = view1.CreateLayer(raster1)
 <!-- more -->
 
 <ul>
-<li>Get the ...</li></ul></!-->
-
-        <!-- read more button -->
-        <a href="/2015/11/example-mnf-transform-using-idl/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
-      </div>
-      <div class="item">
-        <div class="item-title">
-            <h2><a class="theme_link" href="/2015/11/setup-the-blog/">Setup the blog</a></h2>
-          <a href="category/others.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Others</a> 
-          <a href="/2015/11/setup-the-blog/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
-          <span class="label label-default light">23/Nov/2015 Mon</span>
-        </div>
-        <!-- image -->
-
-        <!-- blog short preview -->
-            <p>This blog is hosted by GitHub Pages Using Pelican.</p>
-<div class="highlight"><pre>pelican C:/githubBlog/blogPelican/content -o C:/githubBlog/blogPelican/output -s C:\githubBlog/blogPelican/pelicanconf.py
-
-cd C:/githubBlog/blogPelican/output
-
-python -m pelican.server
+<li>Get the subset and return an Array</li>
+</ul>
+<div class="highlight"><pre>data = raster1.GetData(BANDS=[0,1,2,3], SUB_RECT=[100,449,550,899])
 </pre></div>
 
 
-<!-- more -->
+<ul>
+<li>Convert Array to Raster </li>
+</ul>
+<div class="highlight"><pre>new_raster = ENVIRaster(data)
+new_raster.Save
+</pre></div>
 
-<p>publish to the GitHub (didn't work on me)</p>
-<div class="highlight"><pre>git init
-git remote add origin https ...</pre></div></!-->
 
-        <!-- read more button -->
-        <a href="/2015/11/setup-the-blog/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
-      </div>
- 
- 
-  <!-- /blog item -->
+<ul>
+<li>Perform MNF Transform on the subset data</li>
+</ul>
+<div class="highlight"><pre>Task = ENVITask(&#39;ForwardMNFTransform&#39;) 
+Task.INPUT_RASTER = new_raster 
+Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename() 
+Task.Execute
+</pre></div>
 
-  <!-- PAGINATION -->
-  <ul class="pagination">
-    <li id="prev" class="prev disabled"><a rel="prev">&larr; Previous</a></li>
-    <li id="next" class="next"><a rel="next">&rarr; Next</a></li>
-  </ul>
-  <!-- /PAGINATION -->
+
+<ul>
+<li>View the MNF result in ENVI</li>
+</ul>
+<div class="highlight"><pre>DataColl = e.Data
+
+; Add the output to the data collection
+DataColl.Add, Task.Output_Raster
+
+; Display the result
+View1 = e.GetView()
+Layer1 = View1.CreateLayer(Task.Output_Raster)
+</pre></div>
+
+
+<ul>
+<li>References:</li>
+</ul>
+<blockquote>
+<ol>
+<li>https://www.exelisvis.com/docs/idl_kernel.html</li>
+<li>https://www.exelisvis.com/docs/envi__openraster.html</li>
+<li>http://www.exelisvis.com/docs/enviRaster__GetData.html</li>
+<li>https://www.exelisvis.com/docs/enviforwardmnftransformtask.html</li>
+</ol>
+</blockquote>
+  </article>
+
+    <h3>Related content</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="/2015/11/example-python-to-idl-bridge/">Example - Python to IDL Bridge</a></li>
+      </ul>
+  <div class="divider"><!-- lines divider --></div>
+
+  <!-- SOCIAL -->
+<p class="socials">
+    <a href="http://www.facebook.com/sharer/sharer.php?u=/2015/11/example-mnf-transform-using-idl/" class="rounded-icon social fa fa-facebook" target="_blank" title="Share on Facebook"><!-- facebook --></a>
+    <a href="http://twitter.com/home?status=/2015/11/example-mnf-transform-using-idl/" class="rounded-icon social fa fa-twitter" target="_blank" title="Share on Twitter"><!-- twitter --></a>
+    <a href="https://plus.google.com/share?url=/2015/11/example-mnf-transform-using-idl/" class="rounded-icon social fa fa-google-plus" target="_blank" title="Share on Google+"><!-- google plus --></a>
+    <a href="http://pinterest.com/pin/create/link/?url==/2015/11/example-mnf-transform-using-idl/" class="rounded-icon social fa fa-pinterest"  target="_blank" title="Share on Pinterest"><!-- pinterest --></a>
+    <a href="http://www.linkedin.com/shareArticle?mini=true&url=/2015/11/example-mnf-transform-using-idl/&title=Example - MNF Transform using IDL&summary=&source=" class="rounded-icon social fa fa-linkedin" target="_blank" title="Share on Linkedin"><!-- linkedin --></a>
+</p>  
+
+  <!-- TAGS -->
+  <p class="fsize16"> Tags:
+        <a href="/tag/python.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="2 articles with this tag"><i class="fa fa-tags"></i> python</a>
+        <a href="/tag/idl.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="2 articles with this tag"><i class="fa fa-tags"></i> IDL</a>
+        <a href="/tag/mnf.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="2 articles with this tag"><i class="fa fa-tags"></i> MNF</a>
+  </p>
+
+  <hr /><!-- divider -->
+
         </div>
 
         <!-- SIDEBAR -->

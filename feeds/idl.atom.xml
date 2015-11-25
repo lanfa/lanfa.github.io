@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>刘兰法De博客</title><link href="/" rel="alternate"></link><link href="/feeds/idl.atom.xml" rel="self"></link><id>/</id><updated>2015-11-25T12:00:00+08:00</updated><entry><title>Example - MNF Transform using IDL</title><link href="/2015/11/example-mnf-transform-using-idl/" rel="alternate"></link><updated>2015-11-25T12:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-25:2015/11/example-mnf-transform-using-idl/</id><summary type="html">&lt;p&gt;Ipython + IDL environment setup [1]&lt;/p&gt;
+&lt;p&gt;the following codes were written in Ipython, using ENVI API...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Get the file, read it as Raster and view it in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;e = ENVI()
+file1 = FILEPATH(&amp;#39;qb_boulder_msi&amp;#39;, ROOT_DIR=e.ROOT_DIR, $
+  SUBDIRECTORY = [&amp;#39;data&amp;#39;])
+raster1 = e.OpenRaster(file1)
+view1 = e.GetView()
+layer1 = view1.CreateLayer(raster1)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!-- more --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Get the subset and return an Array&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;data = raster1.GetData(BANDS=[0,1,2,3], SUB_RECT=[100,449,550,899])
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Convert Array to Raster &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;new_raster = ENVIRaster(data)
+new_raster.Save
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Perform MNF Transform on the subset data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Task = ENVITask(&amp;#39;ForwardMNFTransform&amp;#39;) 
+Task.INPUT_RASTER = new_raster 
+Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename() 
+Task.Execute
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;View the MNF result in ENVI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;DataColl = e.Data
+
+; Add the output to the data collection
+DataColl.Add, Task.Output_Raster
+
+; Display the result
+View1 = e.GetView()
+Layer1 = View1.CreateLayer(Task.Output_Raster)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;References:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;https://www.exelisvis.com/docs/idl_kernel.html&lt;/li&gt;
+&lt;li&gt;https://www.exelisvis.com/docs/envi__openraster.html&lt;/li&gt;
+&lt;li&gt;http://www.exelisvis.com/docs/enviRaster__GetData.html&lt;/li&gt;
+&lt;li&gt;https://www.exelisvis.com/docs/enviforwardmnftransformtask.html&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</summary><category term="IDL"></category><category term="python"></category><category term="MNF"></category></entry></feed>
