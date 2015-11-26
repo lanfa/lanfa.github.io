@@ -1,5 +1,525 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>刘兰法De博客</title><link href="/" rel="alternate"></link><link href="/feeds/lanfa.atom.xml" rel="self"></link><id>/</id><updated>2015-11-25T13:00:00+08:00</updated><entry><title>Example - Python to IDL Bridge</title><link href="/2015/11/example-python-to-idl-bridge/" rel="alternate"></link><updated>2015-11-25T13:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-25:2015/11/example-python-to-idl-bridge/</id><summary type="html">&lt;p&gt;The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>刘兰法De博客</title><link href="/" rel="alternate"></link><link href="/feeds/lanfa.atom.xml" rel="self"></link><id>/</id><updated>2015-11-26T12:00:00+08:00</updated><entry><title>PCA implementation in Python, R and ENVI</title><link href="/2015/11/pca-implementation-in-python-r-and-envi/" rel="alternate"></link><updated>2015-11-26T12:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-26:2015/11/pca-implementation-in-python-r-and-envi/</id><summary type="html">&lt;h3&gt;PCA in Python&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.decomposition&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PCA&lt;/span&gt;
+
+&lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;E:/CropLand/Crop_B19.csv&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;cropB12&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cropB12_spc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cropB12&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;X400&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;X410&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="n"&gt;cropB12_spc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;X400&lt;/th&gt;
+      &lt;th&gt;X400.5&lt;/th&gt;
+      &lt;th&gt;X401&lt;/th&gt;
+      &lt;th&gt;X401.5&lt;/th&gt;
+      &lt;th&gt;X402&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;0.670830&lt;/td&gt;
+      &lt;td&gt;0.681216&lt;/td&gt;
+      &lt;td&gt;0.691536&lt;/td&gt;
+      &lt;td&gt;0.701762&lt;/td&gt;
+      &lt;td&gt;0.711861&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;0.656418&lt;/td&gt;
+      &lt;td&gt;0.666273&lt;/td&gt;
+      &lt;td&gt;0.676063&lt;/td&gt;
+      &lt;td&gt;0.685753&lt;/td&gt;
+      &lt;td&gt;0.695310&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;0.704854&lt;/td&gt;
+      &lt;td&gt;0.714867&lt;/td&gt;
+      &lt;td&gt;0.724823&lt;/td&gt;
+      &lt;td&gt;0.734685&lt;/td&gt;
+      &lt;td&gt;0.744426&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;0.820656&lt;/td&gt;
+      &lt;td&gt;0.830459&lt;/td&gt;
+      &lt;td&gt;0.840194&lt;/td&gt;
+      &lt;td&gt;0.849830&lt;/td&gt;
+      &lt;td&gt;0.859331&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;0.769865&lt;/td&gt;
+      &lt;td&gt;0.780363&lt;/td&gt;
+      &lt;td&gt;0.790798&lt;/td&gt;
+      &lt;td&gt;0.801132&lt;/td&gt;
+      &lt;td&gt;0.811335&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;cropB12_spc = cropB12.ix[0:23,&amp;quot;X400&amp;quot;:&amp;quot;X410&amp;quot;]
+pca = PCA(n_components=3)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;-0.072127&lt;/td&gt;
+      &lt;td&gt;-0.036489&lt;/td&gt;
+      &lt;td&gt;0.000217&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;-0.163397&lt;/td&gt;
+      &lt;td&gt;-0.021021&lt;/td&gt;
+      &lt;td&gt;-0.000900&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;0.067489&lt;/td&gt;
+      &lt;td&gt;-0.026726&lt;/td&gt;
+      &lt;td&gt;-0.000653&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;0.586425&lt;/td&gt;
+      &lt;td&gt;-0.019416&lt;/td&gt;
+      &lt;td&gt;-0.001629&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;0.385222&lt;/td&gt;
+      &lt;td&gt;-0.038150&lt;/td&gt;
+      &lt;td&gt;-0.000567&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;cropB12_spc = cropB12.ix[0:23,&amp;quot;X400&amp;quot;:&amp;quot;X420&amp;quot;]
+pca = PCA(n_components=3)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;0.037625&lt;/td&gt;
+      &lt;td&gt;-0.075727&lt;/td&gt;
+      &lt;td&gt;-0.003922&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;0.200872&lt;/td&gt;
+      &lt;td&gt;-0.036732&lt;/td&gt;
+      &lt;td&gt;0.004223&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;-0.131656&lt;/td&gt;
+      &lt;td&gt;-0.045013&lt;/td&gt;
+      &lt;td&gt;0.005044&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;-0.846203&lt;/td&gt;
+      &lt;td&gt;-0.024742&lt;/td&gt;
+      &lt;td&gt;0.006067&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;-0.598328&lt;/td&gt;
+      &lt;td&gt;-0.066553&lt;/td&gt;
+      &lt;td&gt;0.003492&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;cropB12_spc = cropB12.ix[0:12,&amp;quot;X400&amp;quot;:&amp;quot;X410&amp;quot;]
+pca = PCA(n_components=3)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;0.006547&lt;/td&gt;
+      &lt;td&gt;0.030417&lt;/td&gt;
+      &lt;td&gt;-0.000545&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;-0.085377&lt;/td&gt;
+      &lt;td&gt;0.019509&lt;/td&gt;
+      &lt;td&gt;0.000795&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;0.145507&lt;/td&gt;
+      &lt;td&gt;0.013740&lt;/td&gt;
+      &lt;td&gt;0.000228&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;0.663441&lt;/td&gt;
+      &lt;td&gt;-0.019322&lt;/td&gt;
+      &lt;td&gt;0.000683&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;0.463415&lt;/td&gt;
+      &lt;td&gt;0.009372&lt;/td&gt;
+      &lt;td&gt;-0.000299&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;cropB12_spc = cropB12.ix[0:23,&amp;quot;X400&amp;quot;:&amp;quot;X410&amp;quot;]
+pca = PCA(n_components=8)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head().ix[:,0:4]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;th&gt;4&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;-0.072127&lt;/td&gt;
+      &lt;td&gt;-0.036489&lt;/td&gt;
+      &lt;td&gt;0.000217&lt;/td&gt;
+      &lt;td&gt;-0.000129&lt;/td&gt;
+      &lt;td&gt;0.000016&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;-0.163397&lt;/td&gt;
+      &lt;td&gt;-0.021021&lt;/td&gt;
+      &lt;td&gt;-0.000900&lt;/td&gt;
+      &lt;td&gt;-0.000081&lt;/td&gt;
+      &lt;td&gt;-0.000009&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;0.067489&lt;/td&gt;
+      &lt;td&gt;-0.026726&lt;/td&gt;
+      &lt;td&gt;-0.000653&lt;/td&gt;
+      &lt;td&gt;0.000113&lt;/td&gt;
+      &lt;td&gt;0.000015&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;0.586425&lt;/td&gt;
+      &lt;td&gt;-0.019416&lt;/td&gt;
+      &lt;td&gt;-0.001629&lt;/td&gt;
+      &lt;td&gt;-0.000008&lt;/td&gt;
+      &lt;td&gt;-0.000006&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;0.385222&lt;/td&gt;
+      &lt;td&gt;-0.038150&lt;/td&gt;
+      &lt;td&gt;-0.000567&lt;/td&gt;
+      &lt;td&gt;-0.000051&lt;/td&gt;
+      &lt;td&gt;-0.000017&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;PCA in ENVI&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;idlpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IDL&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;IDL Version 8.5, Microsoft Windows (Win32 x86_64 m64).
+(c) 2015, Exelis Visual Information Solutions, Inc., a subsidiary of Harris Corporation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cropB12_spc = cropB12.ix[0:23,&amp;quot;X400&amp;quot;:&amp;quot;X410&amp;quot;]
+a = cropB12_spc.as_matrix().T
+a.shape
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;(21L, 24L)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cropB12_spc_reshape = a.reshape(21,4,6)
+list(cropB12_spc_reshape[:,0,0])[0:5]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;[0.6708305,
+ 0.68121599999999993,
+ 0.69153599999999993,
+ 0.701762,
+ 0.71186149999999992]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;e = IDL.ENVI()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;% Restored file: ENVI.
+% Loaded DLM: HPGRAPHICS.
+% Loaded DLM: XML.
+% Loaded DLM: PNG.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;new_raster = IDL.ENVIRaster(cropB12_spc_reshape)
+new_raster.save()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;% Loaded DLM: NATIVE.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Task = IDL.ENVITask(&amp;#39;ForwardPCATransform&amp;#39;) 
+Task.INPUT_RASTER = new_raster 
+Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename() 
+Task.Execute()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;% Loaded DLM: LAPACK.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ENVI_PCA = Task.Output_Raster.GetData()
+ENVI_PCA = ENVI_PCA.reshape(21,24).T
+ENVI_PCA = pd.DataFrame(ENVI_PCA)
+ENVI_PCA.head().ix[:,0:4]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;th&gt;4&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;-0.072127&lt;/td&gt;
+      &lt;td&gt;0.036489&lt;/td&gt;
+      &lt;td&gt;0.000217&lt;/td&gt;
+      &lt;td&gt;-0.000129&lt;/td&gt;
+      &lt;td&gt;-0.000016&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;-0.163397&lt;/td&gt;
+      &lt;td&gt;0.021021&lt;/td&gt;
+      &lt;td&gt;-0.000900&lt;/td&gt;
+      &lt;td&gt;-0.000081&lt;/td&gt;
+      &lt;td&gt;0.000009&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;0.067489&lt;/td&gt;
+      &lt;td&gt;0.026726&lt;/td&gt;
+      &lt;td&gt;-0.000653&lt;/td&gt;
+      &lt;td&gt;0.000113&lt;/td&gt;
+      &lt;td&gt;-0.000015&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;0.586425&lt;/td&gt;
+      &lt;td&gt;0.019416&lt;/td&gt;
+      &lt;td&gt;-0.001629&lt;/td&gt;
+      &lt;td&gt;-0.000008&lt;/td&gt;
+      &lt;td&gt;0.000006&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;0.385222&lt;/td&gt;
+      &lt;td&gt;0.038150&lt;/td&gt;
+      &lt;td&gt;-0.000567&lt;/td&gt;
+      &lt;td&gt;-0.000051&lt;/td&gt;
+      &lt;td&gt;0.000017&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;PCA in R&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rpy2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;robjects&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rpy2.robjects&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pandas2ri&lt;/span&gt;
+&lt;span class="n"&gt;pandas2ri&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;# http://gastonsanchez.com/blog/how-to/2012/06/17/PCA-in-R.html
+# the PCA is supposed to be performed with standardized data (mean = 0, variance = 1).
+#However, in the following methods, the scale in set to false.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;robjects&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;r&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="s1"&gt;        pca1 &amp;lt;- function(data){&lt;/span&gt;
+&lt;span class="s1"&gt;        pca1 = prcomp(data, scale. = FALSE)&lt;/span&gt;
+&lt;span class="s1"&gt;        return(pca1$x)&lt;/span&gt;
+&lt;span class="s1"&gt;        }&lt;/span&gt;
+
+&lt;span class="s1"&gt;        pca2 &amp;lt;- function(data){&lt;/span&gt;
+&lt;span class="s1"&gt;        pca2 = princomp(data, cor = FALSE)&lt;/span&gt;
+&lt;span class="s1"&gt;        return(pca2$scores)&lt;/span&gt;
+&lt;span class="s1"&gt;        }&lt;/span&gt;
+
+&lt;span class="s1"&gt;        pca3 &amp;lt;- function(data){&lt;/span&gt;
+&lt;span class="s1"&gt;        library(FactoMineR)&lt;/span&gt;
+&lt;span class="s1"&gt;            pca3 = PCA(data, graph = FALSE,scale.unit = FALSE)&lt;/span&gt;
+&lt;span class="s1"&gt;        return(pca3)&lt;/span&gt;
+&lt;span class="s1"&gt;        }&lt;/span&gt;
+
+&lt;span class="s1"&gt;    &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="nf"&gt;pca3_R&lt;/span&gt;&lt;span class="x"&gt; = robjects.r[&amp;#39;pca3&amp;#39;]&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="nf"&gt;pca1_R_Resutls&lt;/span&gt;&lt;span class="x"&gt; = pca3_R(cropB12_spc)&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="nf"&gt;np&lt;/span&gt;&lt;span class="x"&gt;.array(pca1_R_Resutls[2][0])&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; is equal to&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="nf"&gt;pca3&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ind&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;coord&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;pca3_R = robjects.r[&amp;#39;pca3&amp;#39;]
+pca3_R_Resutls = pca3_R(cropB12_spc)
+pd.DataFrame(np.array(pca3_R_Resutls[2][0])).head()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;th&gt;4&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;-0.072127&lt;/td&gt;
+      &lt;td&gt;0.036489&lt;/td&gt;
+      &lt;td&gt;-0.000217&lt;/td&gt;
+      &lt;td&gt;-0.000129&lt;/td&gt;
+      &lt;td&gt;-0.000016&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;-0.163397&lt;/td&gt;
+      &lt;td&gt;0.021021&lt;/td&gt;
+      &lt;td&gt;0.000900&lt;/td&gt;
+      &lt;td&gt;-0.000081&lt;/td&gt;
+      &lt;td&gt;0.000009&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;0.067489&lt;/td&gt;
+      &lt;td&gt;0.026726&lt;/td&gt;
+      &lt;td&gt;0.000653&lt;/td&gt;
+      &lt;td&gt;0.000113&lt;/td&gt;
+      &lt;td&gt;-0.000015&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;0.586425&lt;/td&gt;
+      &lt;td&gt;0.019416&lt;/td&gt;
+      &lt;td&gt;0.001629&lt;/td&gt;
+      &lt;td&gt;-0.000008&lt;/td&gt;
+      &lt;td&gt;0.000006&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;0.385222&lt;/td&gt;
+      &lt;td&gt;0.038150&lt;/td&gt;
+      &lt;td&gt;0.000567&lt;/td&gt;
+      &lt;td&gt;-0.000051&lt;/td&gt;
+      &lt;td&gt;0.000017&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;</summary><category term="Python"></category><category term="R"></category><category term="ENVI"></category><category term="IDL"></category><category term="PCA"></category></entry><entry><title>Example - Python to IDL Bridge</title><link href="/2015/11/example-python-to-idl-bridge/" rel="alternate"></link><updated>2015-11-25T13:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-25:2015/11/example-python-to-idl-bridge/</id><summary type="html">&lt;p&gt;The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. &lt;/p&gt;
+&lt;p&gt;? How to do it without launching ENVI ?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;idlpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IDL&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

@@ -1,31 +1,35 @@
   <div class="item">
         <div class="item-title">
-            <h2><a href="/2015/11/setup-the-blog/">Setup the blog</a></h2>
-          <a href="category/others.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Others</a> 
-          <a href="/2015/11/setup-the-blog/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
-          <span class="label label-default light">23/Nov/2015 Mon</span>
+            <h2><a href="/2015/11/example-mnf-transform-using-idl/">Example - MNF Transform using IDL</a></h2>
+          <a href="category/idl.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> IDL</a> 
+          <a href="/2015/11/example-mnf-transform-using-idl/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
+          <span class="label label-default light">25/Nov/2015 Wed</span>
         </div>
         <!-- image -->
 
         <!-- blog short preview -->
         <p>
-            <p>This blog is hosted by GitHub Pages Using Pelican.</p>
-<div class="highlight"><pre>pelican C:/githubBlog/blogPelican/content -o C:/githubBlog/blogPelican/output -s C:\githubBlog/blogPelican/pelicanconf.py
-
-cd C:/githubBlog/blogPelican/output
-
-python -m pelican.server
+            <p>Ipython + IDL environment setup [1]</p>
+<p>the following codes were written in Ipython, using ENVI API...</p>
+<ul>
+<li>Get the file, read it as Raster and view it in ENVI</li>
+</ul>
+<div class="highlight"><pre>e = ENVI()
+file1 = FILEPATH(&#39;qb_boulder_msi&#39;, ROOT_DIR=e.ROOT_DIR, $
+  SUBDIRECTORY = [&#39;data&#39;])
+raster1 = e.OpenRaster(file1)
+view1 = e.GetView()
+layer1 = view1.CreateLayer(raster1)
 </pre></div>
 
 
 <!-- more -->
 
-<p>publish to the GitHub (didn't work on me)</p>
-<div class="highlight"><pre>git init
-git remote add origin https ...</pre></div></!-->
+<ul>
+<li>Get the ...</li></ul></!-->
         </p>
 
         <!-- read more button -->
-        <a href="/2015/11/setup-the-blog/" class="btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+        <a href="/2015/11/example-mnf-transform-using-idl/" class="btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
       </div>
  

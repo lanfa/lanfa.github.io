@@ -90,6 +90,52 @@
 
       <div class="item">
         <div class="item-title">
+            <h2><a class="theme_link" href="/2015/11/pca-implementation-in-python-r-and-envi/">PCA implementation in Python, R and ENVI</a></h2>
+          <a href="category/machine-learning.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Machine Learning</a> 
+          <a href="/2015/11/pca-implementation-in-python-r-and-envi/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
+          <span class="label label-default light">26/Nov/2015 Thu</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+            <h3>PCA in Python</h3>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">&quot;E:/CropLand/Crop_B19.csv&quot;</span>
+<span class="n">cropB12</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">cropB12_spc</span> <span class="o">=</span> <span class="n">cropB12</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="s">&quot;X400&quot;</span><span class="p">:</span><span class="s">&quot;X410&quot;</span><span class="p">]</span>
+
+<span class="n">cropB12_spc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X400</th>
+      <th>X400.5</th>
+      <th>X401</th>
+      <th>X401.5</th>
+      <th>X402</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.670830</td>
+      <td>0.681216</td>
+      <td>0.691536</td>
+      <td>0.701762</td>
+      <td>0 ...</td></tr></tbody></table></div>
+
+        <!-- read more button -->
+        <a href="/2015/11/pca-implementation-in-python-r-and-envi/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item">
+        <div class="item-title">
             <h2><a class="theme_link" href="/2015/11/example-python-to-idl-bridge/">Example - Python to IDL Bridge</a></h2>
           <a href="category/python.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Python</a> 
           <a href="/2015/11/example-python-to-idl-bridge/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
@@ -99,6 +145,7 @@
 
         <!-- blog short preview -->
             <p>The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. </p>
+<p>? How to do it without launching ENVI ?</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">idlpy</span> <span class="kn">import</span> <span class="n">IDL</span>
 </pre></div>
 
@@ -109,8 +156,7 @@
 <li>Get the file, read it as Raster and view it in ENVI</li>
 </ul>
 <div class="highlight"><pre>e = IDL.ENVI() # The Envi window will be popped out
-File = &quot;C:\\Program Files\\Exelis53\\envi53\\data\\qb_boulder_msi&quot;
-raster1 ...</pre></div></!-->
+File = &quot;C ...</pre></div></!-->
 
         <!-- read more button -->
         <a href="/2015/11/example-python-to-idl-bridge/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
@@ -147,9 +193,10 @@ layer1 = view1.CreateLayer(raster1)
         <!-- read more button -->
         <a href="/2015/11/example-mnf-transform-using-idl/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
       </div>
-      <div class="item">
+ 
+      <div class="item" style="display: none;">
         <div class="item-title">
-            <h2><a class="theme_link" href="/2015/11/setup-the-blog/">Setup the blog</a></h2>
+            <h2><a href="/2015/11/setup-the-blog/">Setup the blog</a></h2>
           <a href="category/others.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Others</a> 
           <a href="/2015/11/setup-the-blog/#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
           <span class="label label-default light">23/Nov/2015 Mon</span>
@@ -157,6 +204,7 @@ layer1 = view1.CreateLayer(raster1)
         <!-- image -->
 
         <!-- blog short preview -->
+        <p>
             <p>This blog is hosted by GitHub Pages Using Pelican.</p>
 <div class="highlight"><pre>pelican C:/githubBlog/blogPelican/content -o C:/githubBlog/blogPelican/output -s C:\githubBlog/blogPelican/pelicanconf.py
 
@@ -171,11 +219,11 @@ python -m pelican.server
 <p>publish to the GitHub (didn't work on me)</p>
 <div class="highlight"><pre>git init
 git remote add origin https ...</pre></div></!-->
+        </p>
 
         <!-- read more button -->
         <a href="/2015/11/setup-the-blog/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
       </div>
- 
  
   <!-- /blog item -->
 
@@ -225,6 +273,8 @@ git remote add origin https ...</pre></div></!-->
             <ul>
                <li><a class="theme_link" href="/category/idl.html"><i class="fa fa-dot-circle-o"></i> IDL</a>
               </li>
+              <li><a class="theme_link" href="/category/machine-learning.html"><i class="fa fa-dot-circle-o"></i> Machine Learning</a>
+              </li>
               <li><a class="theme_link" href="/category/others.html"><i class="fa fa-dot-circle-o"></i> Others</a>
               </li>
               <li><a class="theme_link" href="/category/python.html"><i class="fa fa-dot-circle-o"></i> Python</a>
@@ -243,6 +293,7 @@ git remote add origin https ...</pre></div></!-->
                 None
                 None
                 None
+                None
             </div>
 
             <!-- If the user indicates they prefer a list.-->                <ul class="tree">
@@ -252,6 +303,10 @@ git remote add origin https ...</pre></div></!-->
                             <li>
                                 <span><i class="fa fa-plus-square-o"></i>11</span>
                                 <ul>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="/2015/11/pca-implementation-in-python-r-and-envi/">
+                                            <small>26/Nov/2015 Thu</small>PCA implementation in Python, R and ENVI</a>
+                                        </li>
                                         <li style="display: none;">
                                             <a class="theme_link" href="/2015/11/example-python-to-idl-bridge/">
                                             <small>25/Nov/2015 Wed</small>Example - Python to IDL Bridge</a>

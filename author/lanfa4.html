@@ -67,7 +67,7 @@
             <hr /><hr />
             </div>
             <span class="overlay"></span>
-            <div style="background-image: url('http://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w');" class="fullscreen-img"></div>
+            <div style="background-image: url('http://7xavy4.com1.z0.glb.clouddn.com/dresden.jpg');" class="fullscreen-img"></div>
            
 
         </li>
@@ -314,58 +314,83 @@
 
             <div class="col-md-4 quick-hover">
                 <div class="quick-item">
-                    <h4><a class="theme_link" href="/2015/03/hyperspectral-data-mosaic-using-gdal/">Hyperspectral data mosaic using GDAL</a></h4>
-                <p><h1>Problem using ENVI</h1>
-<hr />
-<h2><a href="http://www.exelisvis.com/docs/MosaicSeamless.html">The Seamless Mosaic tool is limited to 10 bands. If you are using hyperspectral imagery, you should create a spectral subset of no more than 10 bands before using the Seamless Mosaic tool.</a></h2>
-<h1>Solved using GDAL</h1>
-<div class="highlight"><pre><span class="c">% run E:\OneDrive\GitHub\python\gdal_merge.py -n 0 -o &quot;D ...</span></pre></div></p>
-                <a href="/2015/03/hyperspectral-data-mosaic-using-gdal/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <h4><a class="theme_link" href="/2015/11/pca-implementation-in-python-r-and-envi/">PCA implementation in Python, R and ENVI</a></h4>
+                <p><h3>PCA in Python</h3>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">&quot;E:/CropLand/Crop_B19.csv&quot;</span>
+<span class="n">cropB12</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">cropB12_spc</span> <span class="o">=</span> <span class="n">cropB12</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="s">&quot;X400&quot;</span><span class="p">:</span><span class="s">&quot;X410&quot;</span><span class="p">]</span>
+
+<span class="n">cropB12_spc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X400</th>
+      <th>X400.5</th>
+      <th>X401</th>
+      <th>X401.5</th>
+      <th>X402</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.670830</td>
+      <td>0.681216</td>
+      <td>0.691536</td>
+      <td>0.701762</td>
+      <td>0 ...</td></tr></tbody></table></div></p>
+                <a href="/2015/11/pca-implementation-in-python-r-and-envi/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
             </div>
             <div class="col-md-4 quick-hover">
                 <div class="quick-item">
-                    <h4><a class="theme_link" href="/2015/03/gdal-read-modis-datahdf4/">GDAL read Modis data(HDF4)</a></h4>
-                <p><h2><strong><a href="http://jgomezdans.github.io/gdal_notes/ipython.html">Reference Link</a></strong></h2>
-<ul>
-<li><strong>Code</strong></li>
-</ul>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-</pre></div>
-
-
-<div class="highlight"><pre>gdal_dataset=gdal.Open(&quot;D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf&quot;)
-gdal_dataset.GetSubDatasets()  
+                    <h4><a class="theme_link" href="/2015/11/example-python-to-idl-bridge/">Example - Python to IDL Bridge</a></h4>
+                <p><p>The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. </p>
+<p>? How to do it without launching ENVI ?</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">idlpy</span> <span class="kn">import</span> <span class="n">IDL</span>
 </pre></div>
 
 
 <!-- more -->
 
-<blockquote>
-<p>[('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1\MCD12Q1.A2009001.h21v03.005.2011230180224.hdf":MOD12Q1:Land_Cover_Type_1',
-  '[2400x2400] Land_Cover_Type_1 MOD12Q1 (8-bit unsigned integer)'),
- ('HDF4_EOS:EOS_GRID:"D:\PythonWork\MCD12Q1 ...</p></blockquote></!--></p>
-                <a href="/2015/03/gdal-read-modis-datahdf4/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+<ul>
+<li>Get the file, read it as Raster and view it in ENVI</li>
+</ul>
+<div class="highlight"><pre>e = IDL.ENVI() # The Envi window will be popped out
+File = &quot;C ...</pre></div></!--></p>
+                <a href="/2015/11/example-python-to-idl-bridge/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
             </div>
             <div class="col-md-4 quick-hover">
                 <div class="quick-item">
-                    <h4><a class="theme_link" href="/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/">pandas按照时间戳提取多个文件夹指定excel文件数据</a></h4>
-                <p><p>'''
-import os
-import pandas as pd</p>
-<p>path = "F:/b7beb8bf-58d9-4e58-a945-7b6e1dc7705f/2012"
-subfolders = os.listdir(path)</p>
-<h1>初始化一个pandas.core.frame.DataFrame类型的变量，存放提取结果</h1>
-<p>dt_Total = pd.DataFrame() </p>
-<h1>遍历子文件夹</h1>
-<p>for folder in subfolders:
-    files = os.listdir(path+"/"+folder)
-    # 遍历子文件夹内的文件，并提取出文件名含有“20120629”的excel文件名，可能有0个或1个
-    excel = [x for x in files if "20120629" in x]
-    if excel.<strong>len ...</strong></p></p>
-                <a href="/2015/03/pandasan-zhao-shi-jian-chuo-ti-qu-duo-ge-wen-jian-jia-zhi-ding-excelwen-jian-shu-ju/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <h4><a class="theme_link" href="/2015/11/example-mnf-transform-using-idl/">Example - MNF Transform using IDL</a></h4>
+                <p><p>Ipython + IDL environment setup [1]</p>
+<p>the following codes were written in Ipython, using ENVI API...</p>
+<ul>
+<li>Get the file, read it as Raster and view it in ENVI</li>
+</ul>
+<div class="highlight"><pre>e = ENVI()
+file1 = FILEPATH(&#39;qb_boulder_msi&#39;, ROOT_DIR=e.ROOT_DIR, $
+  SUBDIRECTORY = [&#39;data&#39;])
+raster1 = e.OpenRaster(file1)
+view1 = e.GetView()
+layer1 = view1.CreateLayer(raster1)
+</pre></div>
+
+
+<!-- more -->
+
+<ul>
+<li>Get the ...</li></ul></!--></p>
+                <a href="/2015/11/example-mnf-transform-using-idl/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
             </div>
  

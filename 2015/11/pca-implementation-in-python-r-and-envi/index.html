@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>刘兰法De博客 - Remote Sensing Data Science</title>
+    <meta name="description" content="" />
+    <meta name="Author" content="Lanfa Liu" />
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/plugins/lt-ie9/html5.js"></script>
+    <script type="text/javascript" src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/plugins/lt-ie9/respond.min.js"></script>
+    <script type="text/javascript" src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/plugins/lt-ie9/excanvas.compiled.js"></script>
+    <![endif]-->
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Dosis:300,400" rel="stylesheet" type="text/css" />
+
+
+    <!-- CORE CSS FRAMEWORK -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- CSS TEMPLATE -->
+    <link href="/theme/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/framework.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/typography.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/layout.css" rel="stylesheet" type="text/css" />
+
+    <link href="/theme/css/blog.css" rel="stylesheet" type="text/css" />
+
+    <!-- ICONS -->
+        <link rel="shortcut icon" href="http://7xavy4.com1.z0.glb.clouddn.com/favicon16.png" type="image/x-icon" />
+        <link rel="icon" href="http://7xavy4.com1.z0.glb.clouddn.com/favicon16.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://7xavy4.com1.z0.glb.clouddn.com/favicon16.png" type="image/x-icon" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- Morenizr -->
+    <script type="text/javascript" src="/theme/js/modernizr.min.js"></script>
+
+    <!-- google authorship -->
+</head>
+<body>
+
+<!-- Main Nav -->
+<header id="header" style="margin-top:0">
+
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenu" class="fa fa-bars" type="button" data-toggle="collapse" data-target=".navbar-collapse"></button>
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand scrollTo" href="#home">
+          <img src="https://dl.dropboxusercontent.com/u/299446/logo-invert.png" alt="" width="50" height="50" />
+          <span class="hidden-xs">刘兰法De博客</span>
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <!-- Fullscreen Button - Unavailable for IE -->
+        <a href="#" class="btn-fullscreen"><i class="fa fa-external-link"></i></a>
+
+        <ul class="nav navbar-nav navbar-right">
+          <!-- If the user wants to make articles the home page then remove blog link, and make about and work links point to old home page. -->
+            <li><a href="/index.html#home">Home</a></li>
+            <li><a href="/index.html#about">About</a></li>
+            <li><a href="/index.html#work">Work</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+
+    </div>
+  </nav>
+</header>
+<!-- /Main Nav -->  <section id="blog">
+    <article class="container">
+
+      <div class="row">
+        <div id="blog_main_area" class="left col-md-9">
+  <!-- article title -->
+  <header>
+      <h1>PCA implementation in Python, R and ENVI</h1>
+    <small class="fsize13">
+            <a href="/category/machine-learning.html" rel="tag tooltip" class="label label-default light" data-placement="right" data-original-title="1 article in this category"><i class="fa fa-dot-circle-o"></i> Machine Learning</a>
+      <a href="/2015/11/pca-implementation-in-python-r-and-envi/#disqus_thread" class="scrollTo label label-default light" data-disqus-identifier="2015/11/pca-implementation-in-python-r-and-envi/"><i class="fa fa-comment-o"></i> ?? Comments</a>
+      <span class="label label-default light">26/Nov/2015 Thu</span> 
+    </small>
+  </header>
+
+  <article class='content'>
+    <h3>PCA in Python</h3>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">&quot;E:/CropLand/Crop_B19.csv&quot;</span>
+<span class="n">cropB12</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">cropB12_spc</span> <span class="o">=</span> <span class="n">cropB12</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="s">&quot;X400&quot;</span><span class="p">:</span><span class="s">&quot;X410&quot;</span><span class="p">]</span>
+
+<span class="n">cropB12_spc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X400</th>
+      <th>X400.5</th>
+      <th>X401</th>
+      <th>X401.5</th>
+      <th>X402</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.670830</td>
+      <td>0.681216</td>
+      <td>0.691536</td>
+      <td>0.701762</td>
+      <td>0.711861</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.656418</td>
+      <td>0.666273</td>
+      <td>0.676063</td>
+      <td>0.685753</td>
+      <td>0.695310</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.704854</td>
+      <td>0.714867</td>
+      <td>0.724823</td>
+      <td>0.734685</td>
+      <td>0.744426</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.820656</td>
+      <td>0.830459</td>
+      <td>0.840194</td>
+      <td>0.849830</td>
+      <td>0.859331</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.769865</td>
+      <td>0.780363</td>
+      <td>0.790798</td>
+      <td>0.801132</td>
+      <td>0.811335</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre>cropB12_spc = cropB12.ix[0:23,&quot;X400&quot;:&quot;X410&quot;]
+pca = PCA(n_components=3)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head()
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.072127</td>
+      <td>-0.036489</td>
+      <td>0.000217</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.163397</td>
+      <td>-0.021021</td>
+      <td>-0.000900</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.067489</td>
+      <td>-0.026726</td>
+      <td>-0.000653</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.586425</td>
+      <td>-0.019416</td>
+      <td>-0.001629</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.385222</td>
+      <td>-0.038150</td>
+      <td>-0.000567</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre>cropB12_spc = cropB12.ix[0:23,&quot;X400&quot;:&quot;X420&quot;]
+pca = PCA(n_components=3)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head()
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.037625</td>
+      <td>-0.075727</td>
+      <td>-0.003922</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.200872</td>
+      <td>-0.036732</td>
+      <td>0.004223</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.131656</td>
+      <td>-0.045013</td>
+      <td>0.005044</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.846203</td>
+      <td>-0.024742</td>
+      <td>0.006067</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.598328</td>
+      <td>-0.066553</td>
+      <td>0.003492</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre>cropB12_spc = cropB12.ix[0:12,&quot;X400&quot;:&quot;X410&quot;]
+pca = PCA(n_components=3)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head()
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.006547</td>
+      <td>0.030417</td>
+      <td>-0.000545</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.085377</td>
+      <td>0.019509</td>
+      <td>0.000795</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.145507</td>
+      <td>0.013740</td>
+      <td>0.000228</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.663441</td>
+      <td>-0.019322</td>
+      <td>0.000683</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.463415</td>
+      <td>0.009372</td>
+      <td>-0.000299</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre>cropB12_spc = cropB12.ix[0:23,&quot;X400&quot;:&quot;X410&quot;]
+pca = PCA(n_components=8)
+pca_cropB12_spc = pca.fit_transform(cropB12_spc)
+pca_cropB12_spc = pd.DataFrame(pca_cropB12_spc)
+pca_cropB12_spc.head().ix[:,0:4]
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.072127</td>
+      <td>-0.036489</td>
+      <td>0.000217</td>
+      <td>-0.000129</td>
+      <td>0.000016</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.163397</td>
+      <td>-0.021021</td>
+      <td>-0.000900</td>
+      <td>-0.000081</td>
+      <td>-0.000009</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.067489</td>
+      <td>-0.026726</td>
+      <td>-0.000653</td>
+      <td>0.000113</td>
+      <td>0.000015</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.586425</td>
+      <td>-0.019416</td>
+      <td>-0.001629</td>
+      <td>-0.000008</td>
+      <td>-0.000006</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.385222</td>
+      <td>-0.038150</td>
+      <td>-0.000567</td>
+      <td>-0.000051</td>
+      <td>-0.000017</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>PCA in ENVI</h3>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">idlpy</span> <span class="kn">import</span> <span class="n">IDL</span>
+</pre></div>
+
+
+<blockquote>
+<p>IDL Version 8.5, Microsoft Windows (Win32 x86_64 m64).
+(c) 2015, Exelis Visual Information Solutions, Inc., a subsidiary of Harris Corporation.</p>
+</blockquote>
+<div class="highlight"><pre>cropB12_spc = cropB12.ix[0:23,&quot;X400&quot;:&quot;X410&quot;]
+a = cropB12_spc.as_matrix().T
+a.shape
+</pre></div>
+
+
+<blockquote>
+<p>(21L, 24L)</p>
+</blockquote>
+<div class="highlight"><pre>cropB12_spc_reshape = a.reshape(21,4,6)
+list(cropB12_spc_reshape[:,0,0])[0:5]
+</pre></div>
+
+
+<blockquote>
+<p>[0.6708305,
+ 0.68121599999999993,
+ 0.69153599999999993,
+ 0.701762,
+ 0.71186149999999992]</p>
+</blockquote>
+<div class="highlight"><pre>e = IDL.ENVI()
+</pre></div>
+
+
+<blockquote>
+<p>% Restored file: ENVI.
+% Loaded DLM: HPGRAPHICS.
+% Loaded DLM: XML.
+% Loaded DLM: PNG.</p>
+</blockquote>
+<div class="highlight"><pre>new_raster = IDL.ENVIRaster(cropB12_spc_reshape)
+new_raster.save()
+</pre></div>
+
+
+<blockquote>
+<p>% Loaded DLM: NATIVE.</p>
+</blockquote>
+<div class="highlight"><pre>Task = IDL.ENVITask(&#39;ForwardPCATransform&#39;) 
+Task.INPUT_RASTER = new_raster 
+Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename() 
+Task.Execute()
+</pre></div>
+
+
+<blockquote>
+<p>% Loaded DLM: LAPACK.</p>
+</blockquote>
+<div class="highlight"><pre>ENVI_PCA = Task.Output_Raster.GetData()
+ENVI_PCA = ENVI_PCA.reshape(21,24).T
+ENVI_PCA = pd.DataFrame(ENVI_PCA)
+ENVI_PCA.head().ix[:,0:4]
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.072127</td>
+      <td>0.036489</td>
+      <td>0.000217</td>
+      <td>-0.000129</td>
+      <td>-0.000016</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.163397</td>
+      <td>0.021021</td>
+      <td>-0.000900</td>
+      <td>-0.000081</td>
+      <td>0.000009</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.067489</td>
+      <td>0.026726</td>
+      <td>-0.000653</td>
+      <td>0.000113</td>
+      <td>-0.000015</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.586425</td>
+      <td>0.019416</td>
+      <td>-0.001629</td>
+      <td>-0.000008</td>
+      <td>0.000006</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.385222</td>
+      <td>0.038150</td>
+      <td>-0.000567</td>
+      <td>-0.000051</td>
+      <td>0.000017</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>PCA in R</h3>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">rpy2</span> <span class="kn">import</span> <span class="n">robjects</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects</span> <span class="kn">import</span> <span class="n">pandas2ri</span>
+<span class="n">pandas2ri</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+</pre></div>
+
+
+<div class="highlight"><pre># http://gastonsanchez.com/blog/how-to/2012/06/17/PCA-in-R.html
+# the PCA is supposed to be performed with standardized data (mean = 0, variance = 1).
+#However, in the following methods, the scale in set to false.
+</pre></div>
+
+
+<div class="highlight"><pre><span class="nx">robjects</span><span class="p">.</span><span class="nx">r</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        pca1 &lt;- function(data){</span>
+<span class="s1">        pca1 = prcomp(data, scale. = FALSE)</span>
+<span class="s1">        return(pca1$x)</span>
+<span class="s1">        }</span>
+
+<span class="s1">        pca2 &lt;- function(data){</span>
+<span class="s1">        pca2 = princomp(data, cor = FALSE)</span>
+<span class="s1">        return(pca2$scores)</span>
+<span class="s1">        }</span>
+
+<span class="s1">        pca3 &lt;- function(data){</span>
+<span class="s1">        library(FactoMineR)</span>
+<span class="s1">            pca3 = PCA(data, graph = FALSE,scale.unit = FALSE)</span>
+<span class="s1">        return(pca3)</span>
+<span class="s1">        }</span>
+
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="cp">#</span><span class="nf">pca3_R</span><span class="x"> = robjects.r[&#39;pca3&#39;]</span>
+<span class="cp">#</span><span class="nf">pca1_R_Resutls</span><span class="x"> = pca3_R(cropB12_spc)</span>
+<span class="cp">#</span><span class="nf">np</span><span class="x">.array(pca1_R_Resutls[2][0])</span>
+<span class="err">#</span><span class="x"> is equal to</span>
+<span class="cp">#</span><span class="nf">pca3</span><span class="p">$</span><span class="nv">ind</span><span class="p">$</span><span class="nv">coord</span><span class="x"></span>
+</pre></div>
+
+
+<div class="highlight"><pre>pca3_R = robjects.r[&#39;pca3&#39;]
+pca3_R_Resutls = pca3_R(cropB12_spc)
+pd.DataFrame(np.array(pca3_R_Resutls[2][0])).head()
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.072127</td>
+      <td>0.036489</td>
+      <td>-0.000217</td>
+      <td>-0.000129</td>
+      <td>-0.000016</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.163397</td>
+      <td>0.021021</td>
+      <td>0.000900</td>
+      <td>-0.000081</td>
+      <td>0.000009</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.067489</td>
+      <td>0.026726</td>
+      <td>0.000653</td>
+      <td>0.000113</td>
+      <td>-0.000015</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.586425</td>
+      <td>0.019416</td>
+      <td>0.001629</td>
+      <td>-0.000008</td>
+      <td>0.000006</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.385222</td>
+      <td>0.038150</td>
+      <td>0.000567</td>
+      <td>-0.000051</td>
+      <td>0.000017</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  </article>
+
+    <h3>Related content</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="/2015/11/example-mnf-transform-using-idl/">Example - MNF Transform using IDL</a></li>
+        <li><a href="/2015/11/example-python-to-idl-bridge/">Example - Python to IDL Bridge</a></li>
+      </ul>
+  <div class="divider"><!-- lines divider --></div>
+
+  <!-- SOCIAL -->
+<p class="socials">
+    <a href="http://www.facebook.com/sharer/sharer.php?u=/2015/11/pca-implementation-in-python-r-and-envi/" class="rounded-icon social fa fa-facebook" target="_blank" title="Share on Facebook"><!-- facebook --></a>
+    <a href="http://twitter.com/home?status=/2015/11/pca-implementation-in-python-r-and-envi/" class="rounded-icon social fa fa-twitter" target="_blank" title="Share on Twitter"><!-- twitter --></a>
+    <a href="https://plus.google.com/share?url=/2015/11/pca-implementation-in-python-r-and-envi/" class="rounded-icon social fa fa-google-plus" target="_blank" title="Share on Google+"><!-- google plus --></a>
+    <a href="http://pinterest.com/pin/create/link/?url==/2015/11/pca-implementation-in-python-r-and-envi/" class="rounded-icon social fa fa-pinterest"  target="_blank" title="Share on Pinterest"><!-- pinterest --></a>
+    <a href="http://www.linkedin.com/shareArticle?mini=true&url=/2015/11/pca-implementation-in-python-r-and-envi/&title=PCA implementation in Python, R and ENVI&summary=&source=" class="rounded-icon social fa fa-linkedin" target="_blank" title="Share on Linkedin"><!-- linkedin --></a>
+</p>  
+
+  <!-- TAGS -->
+  <p class="fsize16"> Tags:
+        <a href="/tag/python.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="3 articles with this tag"><i class="fa fa-tags"></i> Python</a>
+        <a href="/tag/idl.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="3 articles with this tag"><i class="fa fa-tags"></i> IDL</a>
+        <a href="/tag/envi.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="1 article with this tag"><i class="fa fa-tags"></i> ENVI</a>
+        <a href="/tag/r.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="1 article with this tag"><i class="fa fa-tags"></i> R</a>
+        <a href="/tag/pca.html" rel="tooltip" class="label label-default light" data-placement="right" data-original-title="1 article with this tag"><i class="fa fa-tags"></i> PCA</a>
+  </p>
+
+  <hr /><!-- divider -->
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="right col-md-3">
+          <!-- recent work -->
+          <!-- <div class="widget">
+
+                      <h3>Recent Work</h3>
+
+                      <a class="popup-image thumb" href="assets/images/preview/slider/1.jpg">
+                          <img src="/theme/img/1x1.png" class="img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
+                      </a>
+                      <a class="popup-video thumb" href="http://www.youtube.com/watch?v=kh29_SERH0Y?rel=0">
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
+                      </a>
+                      <a class="popup-video thumb" href="http://vimeo.com/23630702">
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
+                      </a>
+
+                      <a class="external ajax-project thumb" href="project-external-1.html">
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
+                      </a>
+                      <a class="external ajax-project thumb" href="project-external-2.html">
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
+                      </a>
+                      <a class="external ajax-project thumb" href="project-external-3.html">
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
+                      </a>
+
+                      <div class="clearfix"></div>
+                  </div> -->
+
+          <!-- categories -->
+          <div class="widget">
+
+            <h3>Categories</h3>
+
+            <ul>
+               <li><a class="theme_link" href="/category/idl.html"><i class="fa fa-dot-circle-o"></i> IDL</a>
+              </li>
+              <li><a class="theme_link" href="/category/machine-learning.html"><i class="fa fa-dot-circle-o"></i> Machine Learning</a>
+              </li>
+              <li><a class="theme_link" href="/category/others.html"><i class="fa fa-dot-circle-o"></i> Others</a>
+              </li>
+              <li><a class="theme_link" href="/category/python.html"><i class="fa fa-dot-circle-o"></i> Python</a>
+              </li>
+            </ul>
+
+          </div>
+
+          <!-- Archives -->
+          <div class="widget">
+
+            <h3>Archives</h3>
+
+            <!-- Get all of the articles with their dates -->
+            <div class="hidden">
+                None
+                None
+                None
+                None
+            </div>
+
+            <!-- If the user indicates they prefer a list.-->                <ul class="tree">
+                    <li>
+                        <span><i class="fa fa-minus-square-o"></i>2015</span>
+                        <ul>
+                            <li>
+                                <span><i class="fa fa-plus-square-o"></i>11</span>
+                                <ul>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="/2015/11/pca-implementation-in-python-r-and-envi/">
+                                            <small>26/Nov/2015 Thu</small>PCA implementation in Python, R and ENVI</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="/2015/11/example-python-to-idl-bridge/">
+                                            <small>25/Nov/2015 Wed</small>Example - Python to IDL Bridge</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="/2015/11/example-mnf-transform-using-idl/">
+                                            <small>25/Nov/2015 Wed</small>Example - MNF Transform using IDL</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="/2015/11/setup-the-blog/">
+                                            <small>23/Nov/2015 Mon</small>Setup the blog</a>
+                                        </li>
+                                </ul>
+                            </li>
+                        </ul></li>
+                </ul></div>
+
+        </div>
+        <!-- /SIDEBAR -->
+
+      </div>
+
+    </article>
+  </section>
+  <!-- /BLOG -->
+
+<!-- FOOTER -->
+<footer>
+
+  <!-- SCROOL TO TOP -->
+  <a href="#toTop" class="fa fa-arrow-up toTop"></a>
+
+  <div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6 copyright">
+            刘兰法De博客
+            <br />2015 &copy; All Rights Reserved.
+        </div>
+
+        <div class="col-md-6 text-right">
+              <a href="https://www.linkedin.com/in/lanfa-liu-80a287b5" class="social fa fa-linkedin" target="_blank"></a>
+              <a href="https://github.com/lanfa" class="social fa fa-github" target="_blank"></a>
+              <a href="mailto:lanfa.liu@outlook.com" class="social fa fa-envelope" target="_blank"></a>
+        </div>
+
+    </div>
+
+  </div>
+</footer>
+<!-- /FOOTER -->
+
+
+
+<!-- CORE FILES -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.isotope.js"></script>
+<script type="text/javascript" src="/theme/js/masonry.js"></script>
+
+<!-- PLUGINS -->
+<script type="text/javascript" src="/theme/js/jquery.fitvids.min.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.appear.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.superslides.min.js"></script>
+<script type="text/javascript" src="/theme/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="/theme/js/holder.js"></script>
+<!-- delete on production -->
+
+<!-- js scripts -->
+<script async type="text/javascript" src="/theme/js/scripts.js"></script>
+
+<script type="text/javascript" src="/theme/js/ImageAutoResize.js"></script>
+<script type="text/javascript" src="/theme/js/application.js"></script>
+
+
+
+
+
+</body>
+
+</html>

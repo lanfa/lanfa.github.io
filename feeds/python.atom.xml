@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>刘兰法De博客</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2015-11-25T13:00:00+08:00</updated><entry><title>Example - Python to IDL Bridge</title><link href="/2015/11/example-python-to-idl-bridge/" rel="alternate"></link><updated>2015-11-25T13:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-25:2015/11/example-python-to-idl-bridge/</id><summary type="html">&lt;p&gt;The Python to IDL bridge provides a mechanism for calling IDL code from Python[1]. &lt;/p&gt;
+&lt;p&gt;? How to do it without launching ENVI ?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;idlpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IDL&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
