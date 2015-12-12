@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>刘兰法De博客</title><link href="/" rel="alternate"></link><link href="/feed/atom/index.html" rel="self"></link><id>/</id><updated>2015-12-12T12:00:00+08:00</updated><entry><title>Least Square, KNN</title><link href="/2015/12/least-square-knn/" rel="alternate"></link><updated>2015-12-12T12:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-12-12:2015/12/least-square-knn/</id><summary type="html">&lt;h3&gt;Least Square&lt;/h3&gt;
-&lt;p&gt;$ \hat{Y} = X^T \hat{\beta} $&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\( RSS(\beta) = \sum_{i=1}^N (y_i-x_i^T\beta)^2  \text {, 误差平方和}\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\( RSS(\beta) = tr[(Y-X\beta)^T(Y-X\beta)] \text {, 矩阵的迹}\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\(X^T(Y-X\beta) = 0  \text {, 对矩阵的迹求导}\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;$ \beta = (X^TX)^{-1}X^TY \text {, 最小二乘矩阵形式} $&lt;/p&gt;
+&lt;div class="math"&gt;$$ \hat{Y} = X^T \hat{\beta} $$&lt;/div&gt;
+&lt;div class="math"&gt;$$ RSS(\beta) = \sum_{i=1}^N (y_i-x_i^T\beta)^2  \text {, 误差平方和}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ RSS(\beta) = tr[(Y-X\beta)^T(Y-X\beta)] \text {, 矩阵的迹}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ X^T(Y-X\beta) = 0  \text {, 对矩阵的迹求导}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ \beta = (X^TX)^{-1}X^TY \text {, 最小二乘矩阵形式} $$&lt;/div&gt;
 &lt;p&gt;Code Example&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# http://blog.csdn.net/u012176591/article/details/36930727&lt;/span&gt;
 
@@ -44,11 +44,12 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;最小二乘有较低的方差，但可能会有较高的偏差 ？&lt;/p&gt;
 &lt;p&gt;最小二乘为什么选择误差平方和而不是误差绝对值的和
 http://blog.sciencenet.cn/blog-430956-621997.html
 http://sbp810050504.blog.51cto.com/2799422/1269572&lt;/p&gt;
 &lt;h3&gt;KNN 最临近值&lt;/h3&gt;
-&lt;p&gt;\hat{y}= mean(y_i|x_i \in N_k(x))&lt;/p&gt;
+&lt;p&gt;$ \hat{y}= mean(y_i|x_i \in N_k(x)) $&lt;/p&gt;
 &lt;p&gt;参考
 The Elements of Statistical Learning, http://statweb.stanford.edu/~tibs/ElemStatLearn/
 http://blog.csdn.net/acdreamers/article/details/44662633&lt;/p&gt;
@@ -109,7 +110,7 @@ http://blog.csdn.net/acdreamers/article/details/44662633&lt;/p&gt;
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="Statistical Learning"></category><category term="×îÐ¡¶þ³Ë"></category><category term="KNN"></category></entry><entry><title>PCA implementation in Python, R and ENVI</title><link href="/2015/11/pca-implementation-in-python-r-and-envi/" rel="alternate"></link><updated>2015-11-26T12:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-26:2015/11/pca-implementation-in-python-r-and-envi/</id><summary type="html">&lt;h3&gt;PCA in Python&lt;/h3&gt;
+&lt;/script&gt;</summary><category term="Statistical Learning"></category><category term="Least Square"></category><category term="KNN"></category></entry><entry><title>PCA implementation in Python, R and ENVI</title><link href="/2015/11/pca-implementation-in-python-r-and-envi/" rel="alternate"></link><updated>2015-11-26T12:00:00+08:00</updated><author><name>Lanfa</name></author><id>tag:,2015-11-26:2015/11/pca-implementation-in-python-r-and-envi/</id><summary type="html">&lt;h3&gt;PCA in Python&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.decomposition&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PCA&lt;/span&gt;
 

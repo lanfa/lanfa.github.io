@@ -5,14 +5,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2015-12-12T20:53:45-00:00</lastmod>
+<lastmod>2015-12-12T21:13:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2015-12-12T20:53:45-00:00</lastmod>
+<lastmod>2015-12-12T21:13:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -95,13 +95,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/tag/xidpth3e.html</loc>
-<lastmod>2015-12-12T12:00:00+07:37</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>/tag/python.html</loc>
 <lastmod>2015-11-26T12:00:00+07:37</lastmod>
 <changefreq>daily</changefreq>
@@ -138,6 +131,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/tag/statistical-learning.html</loc>
+<lastmod>2015-12-12T12:00:00+07:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/tag/least-square.html</loc>
 <lastmod>2015-12-12T12:00:00+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
