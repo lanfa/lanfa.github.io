@@ -314,6 +314,76 @@
 
             <div class="col-md-4 quick-hover">
                 <div class="quick-item">
+                    <h4><a class="theme_link" href="/2015/12/least-square-knn/">Least Square, KNN</a></h4>
+                <p><h3>Least Square</h3>
+<p>$ \hat{Y} = X^T \hat{\beta} $</p>
+<p><span class="math">\( RSS(\beta) = \sum_{i=1}^N (y_i-x_i^T\beta)^2  \text {, 误差平方和}\)</span></p>
+<p><span class="math">\( RSS(\beta) = tr[(Y-X\beta)^T(Y-X\beta)] \text {, 矩阵的迹}\)</span></p>
+<p><span class="math">\(X^T(Y-X\beta) = 0  \text {, 对矩阵的迹求导}\)</span></p>
+<p>$ \beta = (X^TX)^{-1}X^TY \text {, 最小二乘矩阵形式} $</p>
+<p>Code Example</p>
+<div class="highlight"><pre><span class="c"># http://blog.csdn ...</span></pre></div><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></p>
+                <a href="/2015/12/least-square-knn/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+                </div>
+            </div>
+            <div class="col-md-4 quick-hover">
+                <div class="quick-item">
                     <h4><a class="theme_link" href="/2015/11/pca-implementation-in-python-r-and-envi/">PCA implementation in Python, R and ENVI</a></h4>
                 <p><h3>PCA in Python</h3>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -367,30 +437,6 @@
 <div class="highlight"><pre>e = IDL.ENVI() # The Envi window will be popped out
 File = &quot;C ...</pre></div></!--></p>
                 <a href="/2015/11/example-python-to-idl-bridge/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
-                </div>
-            </div>
-            <div class="col-md-4 quick-hover">
-                <div class="quick-item">
-                    <h4><a class="theme_link" href="/2015/11/example-mnf-transform-using-idl/">Example - MNF Transform using IDL</a></h4>
-                <p><p>Ipython + IDL environment setup [1]</p>
-<p>the following codes were written in Ipython, using ENVI API...</p>
-<ul>
-<li>Get the file, read it as Raster and view it in ENVI</li>
-</ul>
-<div class="highlight"><pre>e = ENVI()
-file1 = FILEPATH(&#39;qb_boulder_msi&#39;, ROOT_DIR=e.ROOT_DIR, $
-  SUBDIRECTORY = [&#39;data&#39;])
-raster1 = e.OpenRaster(file1)
-view1 = e.GetView()
-layer1 = view1.CreateLayer(raster1)
-</pre></div>
-
-
-<!-- more -->
-
-<ul>
-<li>Get the ...</li></ul></!--></p>
-                <a href="/2015/11/example-mnf-transform-using-idl/" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
             </div>
  
